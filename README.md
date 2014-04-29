@@ -1,2 +1,2 @@
-angular-tt
+angular-app-ns
 ==========
