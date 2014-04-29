@@ -1,0 +1,35 @@
+/* app css stylesheet */
+ul {
+  padding: 0px;
+}
+li {
+  list-style: none;
+}
+.tt-category {
+  background-color: #000;
+  color: #fff;
+  margin: 0px;
+  font-size: 1.5em;
+  padding: 5px;
+}
+.subsub-category {
+  background-color: #ffffbe;
+  color: #000;
+}
+.sub-category {
+  background-color: #3076b7;
+  color: #fff;
+  font-size: 1.5em;
+}
+.value, .edit {
+  float: right;
+}
+.swipe {
+  font-size: 1.5em;
+}
+.swipe, .sub-category {
+  padding: 5px;
+}
+.subGroup, .subInfoGroup {
+  padding-left: 30px;
+}

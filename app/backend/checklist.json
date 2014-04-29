@@ -1,0 +1,56 @@
+[{
+  "id": 5022,
+  "title": "Introduction",
+  "type": "category",
+  "items": [{
+    "id": "5022_0",
+    "title": "Model year",
+    "value": 2007
+  }, {
+    "id": "5022_0",
+    "title": "Version information",
+    "type": "subsub-category",
+    "value": "1.0.0",
+    "items": [{
+      "id": "5022_0_0",
+      "title": "Release date",
+      "value": "20/03/2014"
+    }]
+  }]
+}, {
+  "id": 5023,
+  "title": "Features",
+  "type": "category",
+  "items": [{
+    "id": "5023_0",
+    "title": "Exterior features",
+    "type": "sub-category",
+    "items": [{
+      "id": "5023_0_0",
+      "title": "See through roof",
+      "value": "Lorem"
+    }, {
+      "id": "5023_0_1",
+      "title": "Solar powered roof panel",
+      "value": "Lorem"
+    }, {
+      "id": "5023_0_3",
+      "title": "Doors",
+      "value": "Lorem",
+      "type": "subsub-category",
+      "items": [{
+        "id": "5002_0_3_1",
+        "title": "door type",
+        "value": "Lorem"
+      }, {
+        "id": "5002_0_3_1",
+        "title": "door close system",
+        "value": "Lorem"
+      }, {
+        "id": "5002_0_3_1",
+        "title": "electric doors",
+        "value": "Lorem"
+      }]
+    }]
+  }]
+}]

@@ -1,0 +1,26 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>My AngularJS App</title>
+  <link rel="stylesheet" href="styles/main.css"></head>
+<body  ng-app="ToyotaTCheck">
+  <div>
+    <ul data-role="listview" data-inset="true" data-shadow="false" id="specListWarp" class="list" ng-controller="ItemListController">
+      <li ng-repeat="category in categories" id="{{category.id}}">
+        <h2 class="tt-category">- {{category.title}}</h2>
+        <ul>
+          <li ng-repeat="item in category.items" ng-include="templateUrl" ng-controller="ItemController"></li>
+        </ul>
+      </li>
+    </ul>
+  </div>
+  <hr>
+  <script src="scripts/vendor/angular.js"></script>
+  <script src="scripts/app.js"></script>
+  <script src="scripts/controllers/ItemListController.js"></script>
+  <script src="scripts/controllers/ItemController.js"></script>
+  <script src="scripts/services/ItemList.js"></script>
+  <script src="scripts/services/Item.js"></script>
+</body>
+</html>
