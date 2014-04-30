@@ -18,13 +18,26 @@ angular.module('ToyotaTCheck.services.ItemList', [])
             var checklists = [];
 
             $http.get(baseUrl + 'checklist.json')
-              .success(function(data, status) {
-                angular.forEach(data, function(item) {
-                  checklists.push(item);
-                });
-              })
-              .error(function() {
-                $log.log('ERROR');
+              // .success(function(data, status) {
+              //   angular.forEach(data, function(item) {
+              //     checklists.push(item);
+              //   });
+              // })
+              // .error(function() {
+              //   $log.log('ERROR');
+              // });
+              .then(function(data) {
+                $log.log(111111);
+                $log.log(data);
+                // data = data.data;
+                // angular.forEach(data, function(item) {
+                //   checklists.push(item);
+                // });
+                //return $http.get(baseUrl + 'temp.json');
+                return this;
+              }).then(function(data) {
+                $log.log(222222);
+                $log.log(data);
               });
 
             return checklists;
