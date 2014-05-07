@@ -5,30 +5,26 @@
 angular.module('ToyotaTCheck.controllers.ItemController', [])
   .controller('ItemController', ['$scope', 'Item', '$log', function($scope, Item, $log) {
 
-      if ($scope.item.type == 'sub-category') {
-        $scope.templateUrl = './scripts/directives/templates/unswipable.html';
-      } else {
-        $scope.templateUrl = './scripts/directives/templates/swipable.html';
-      }
+    var tplBaseUrl = './scripts/directives/templates/';
 
-      $scope.doSave = function() {
-        Item.edit({
-          'id': $scope.item.id,
-          'key': 'value',
-          'value': $scope.item.value
+    $scope.templateUrl = tplBaseUrl + 
+      ($scope.item.type === 'sub-category' ? 'unswipable.html' : 'swipable.html');
+    $scope.originalItem = angular.copy($scope.item);
+
+    $scope.doSave = function() {
+      Item.save($scope.item)
+        .then(function(response) {
+          $scope.originalItem = angular.copy($scope.item);
+
+        }, function(error) {
+          $log.log(error + ' Revert!');
+          $scope.revert();
         });
-      };
+    };
 
-      // $scope.$watch('item.value', function(newValue, oldValue, $scope) {
+    $scope.revert = function() {
+      angular.copy($scope.originalItem, $scope.item);
+    };
 
-      //   if (newValue !== oldValue) {
-      //     Item.edit({
-      //       'id': $scope.item.id,
-      //       'key': 'value',
-      //       'value': $scope.item.value
-      //     });
-      //   }
-      // }, true);
-    }
-  ]);
 
+  }]);

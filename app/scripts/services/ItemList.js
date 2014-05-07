@@ -11,24 +11,20 @@ angular.module('ToyotaTCheck.services.ItemList', [])
       baseUrl = url;
     };
 
-    this.$get = ['$http', '$log',
-      function($http, $log) {
+    this.$get = ['$http', '$log', function($http, $log) {
 
         return {
           query: function() {
             var checklists = [];
 
             $http.get(baseUrl + 'checklist.json')
-              .then(
-                function(response) {
-                  angular.forEach(response.data, function(item) {
-                    checklists.push(item);
-                  });
-                },
-                function(error) {
-                  $log.log(error);
-                }
-              );
+              .then(function(response) {
+                angular.forEach(response.data, function(item) {
+                  checklists.push(item);
+                });
+              }, function(error) {
+                $log.log(error);
+              });
 
             return checklists;
           }

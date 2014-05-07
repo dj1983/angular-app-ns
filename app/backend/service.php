@@ -1,5 +1,10 @@
 <?php
 
-$json = json_decode($HTTP_RAW_POST_DATA);
+// sleep(1);
 
-echo json_encode($json->data);
+// $json = json_decode($HTTP_RAW_POST_DATA);
+
+// echo json_encode($json->data);
+
+# Error response
+echo json_encode(array('status'=>'failure', 'msg'=>'ERROR: Access denied.'));
