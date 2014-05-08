@@ -26,5 +26,4 @@ angular.module('ToyotaTCheck.controllers.ItemController', [])
       angular.copy($scope.originalItem, $scope.item);
     };
 
-
   }]);

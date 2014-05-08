@@ -5,19 +5,20 @@
   <title>My AngularJS App</title>
   <link rel="stylesheet" href="styles/main.css"></head>
 <body  ng-app="ToyotaTCheck">
-  <div>
-    <ul data-role="listview" data-inset="true" data-shadow="false" id="specListWarp" class="list" ng-controller="ItemListController">
+  <div ng-controller="ItemListController">
+    <ul data-role="listview" data-inset="true" data-shadow="false" id="specListWarp" class="list">
       <li ng-repeat="category in categories" id="{{category.id}}">
         <h2 class="tt-category">- {{category.title}}</h2>
         <ul>
-          <li ng-repeat="item in category.items" ng-include="templateUrl" ng-controller="ItemController"></li>
+          <li ng-repeat="item in category.items | filter: itemFilter()" ng-include="templateUrl" ng-controller="ItemController"></li>
         </ul>
       </li>
     </ul>
+    <hr>
+    <button ng-click="filterAll();">All items</button>
+    <button ng-click="filterFlag();">Flaged items</button>
+    <button ng-click="filterNA();">N/A items</button>
   </div>
-  <hr>
-  <demo></demo>
-  <hr>
   <script src="scripts/vendor/angular.js"></script>
   <script src="scripts/app.js"></script>
   <script src="scripts/controllers/ItemListController.js"></script>

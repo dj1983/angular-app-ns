@@ -1,4 +1,4 @@
 <div class="sub-category">{{item.title}}</div>
 <ul class="subGroup" ng-if="item.items.length > 0">
-  <li ng-repeat="item in item.items" ng-include="templateUrl" ng-controller="ItemController"></li>
+  <li ng-repeat="item in item.items | filter: itemFilter()" ng-include="templateUrl" ng-controller="ItemController"></li>
 </ul>

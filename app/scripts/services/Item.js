@@ -9,17 +9,20 @@ angular.module('ToyotaTCheck.services.Item', [])
 
     return {
       save: function(item) {
+
         return $http.post(baseUrl + 'service.php', {
           'data': {
             'id': item.id,
             'title': item.title,
             'type': item.type
           }
+
         }).then(function(response) {
           var data = response.data;
 
           if (data.status == 'failure') {
             return $q.reject(data.msg);
+
           } else {
             return data;
           }
