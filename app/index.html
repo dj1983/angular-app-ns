@@ -7,7 +7,7 @@
 <body  ng-app="ToyotaTCheck">
   <div class="list" ng-controller="ItemListController">
     <ul data-role="listview" data-inset="true" data-shadow="false" id="specListWarp" class="list">
-      <li ng-repeat="category in categories" id="{{category.id}}">
+      <li ng-repeat="category in categories" id="{{category.id}}" ng-if="category.items.length > 0">
         <h2 class="tt-category">- {{category.title}}</h2>
         <ul>
           <li ng-repeat="item in category.items | filter: itemFilter()" ng-include="templateUrl" ng-controller="ItemController"></li>
