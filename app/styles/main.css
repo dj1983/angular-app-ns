@@ -33,3 +33,25 @@ li {
 .subGroup, .subInfoGroup {
   padding-left: 30px;
 }
+.list {
+  position: relative;
+  overflow: hidden;
+}
+.loading {
+  width: 100%;
+  height: 100%;
+  line-height: 506px;
+  background-color: #ccc;
+  position: absolute;
+  left: 0px;
+  top: 0px;
+  opacity: 0.6;
+  text-align: center;
+  overflow: hidden;
+  font-size: 3em;
+  font-weight: 700;
+  display: none;
+}
+.show {
+  display: block;
+}

@@ -3,7 +3,7 @@
 /** Controller */
 
 angular.module('ToyotaTCheck.controllers.ItemController', [])
-  .controller('ItemController', ['$scope', 'Item', '$log', function($scope, Item, $log) {
+  .controller('ItemController', ['$scope', 'Item', '$log', '$window', function($scope, Item, $log, $window) {
 
     var tplBaseUrl = './scripts/directives/templates/';
 
@@ -12,6 +12,7 @@ angular.module('ToyotaTCheck.controllers.ItemController', [])
     $scope.originalItem = angular.copy($scope.item);
 
     $scope.doSave = function() {
+      $scope.loading.isShow = 1;
       Item.save($scope.item)
         .then(function(response) {
           $scope.originalItem = angular.copy($scope.item);
@@ -19,6 +20,10 @@ angular.module('ToyotaTCheck.controllers.ItemController', [])
         }, function(error) {
           $log.log(error + ' Revert!');
           $scope.revert();
+          $window.alert(error + ' Revert!');
+        })
+        .then(function() {
+          $scope.loading.isShow = 0;
         });
     };
 
