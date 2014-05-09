@@ -18,9 +18,9 @@
     <button ng-click="filterAll();">All items</button>
     <button ng-click="filterFlag();">Flaged items</button>
     <button ng-click="filterNA();">N/A items</button>
-    <div ng-class="{ loading: 1, show: loading.isShow }">
-      Loading...
-    </div>
+    <!-- LOADING_INDICATOR_BEGIN -->
+    <div loading-indicator></div>
+    <!-- LOADING_INDICATOR_END -->
   </div>
   <script src="scripts/vendor/angular.js"></script>
   <script src="scripts/app.js"></script>
@@ -28,6 +28,6 @@
   <script src="scripts/controllers/ItemController.js"></script>
   <script src="scripts/services/ItemList.js"></script>
   <script src="scripts/services/Item.js"></script>
-  <script src="scripts/directives/demo.js"></script>
+  <script src="scripts/directives/loadingIndicator.js"></script>
 </body>
 </html>
