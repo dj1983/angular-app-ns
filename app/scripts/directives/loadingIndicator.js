@@ -9,7 +9,6 @@ angular.module('ToyotaTCheck.directives.loadingIndicator', [])
       restrict: 'EA',
       template: '<div ng-class="{ loading: 1, show: loading.isShow }">Loading...</div>',
       replace: 1,
-      scope: {},
       link: function(scope, iElement, iAttrs) {
 
       }
