@@ -3,7 +3,7 @@
   <span class="value"><input type="text" ng-model="item.value"><button ng-click="doSave();">save</button></span>
 </div>
 <ul class="subInfoGroup" ng-if="item.items.length > 0">
-  <li ng-repeat="item in item.items | filter: itemFilter()" ng-controller="ItemController">
+  <li ng-repeat="item in item.items | itemFilter: itemStatus" ng-controller="ItemController">
     <div class="swipe">
       <span class="title">{{item.title}}</span>
       <span class="value"><input type="text" ng-model="item.value"><button ng-click="doSave();">save</button></span>
