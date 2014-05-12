@@ -12,7 +12,7 @@ angular.module('ToyotaTCheck.controllers.ItemController', [])
     $scope.originalItem = angular.copy($scope.item);
 
     $scope.doSave = function() {
-      $scope.loading.isShow = 1;
+      $scope.loadingOverlay.isShow = 1;
       Item.save($scope.item)
         .then(function(response) {
           $scope.originalItem = angular.copy($scope.item);
@@ -23,7 +23,7 @@ angular.module('ToyotaTCheck.controllers.ItemController', [])
           $window.alert(error + ' Revert!');
         })
         .then(function() {
-          $scope.loading.isShow = 0;
+          $scope.loadingOverlay.isShow = 0;
         });
     };
 

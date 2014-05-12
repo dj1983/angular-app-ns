@@ -6,7 +6,7 @@ angular.module('ToyotaTCheck.controllers.ItemListController', [])
   .controller('ItemListController', ['$scope', 'ItemList', '$log', function($scope, ItemList, $log) {
     $scope.categories = ItemList.query();
     $scope.itemStatus = 'all';
-    $scope.loading = {
+    $scope.loadingOverlay = {
       isShow: 0
     };
 

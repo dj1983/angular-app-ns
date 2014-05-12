@@ -8,6 +8,7 @@ angular.module('ToyotaTCheck', [
     'ToyotaTCheck.services.Item',
     /** Directives */
     'ToyotaTCheck.directives.loadingIndicator',
+    'ToyotaTCheck.directives.terminal',
     /** Controllers */
     'ToyotaTCheck.controllers.ItemListController',
     'ToyotaTCheck.controllers.ItemController'

@@ -18,9 +18,15 @@
     <button ng-click="filterAll();">All items</button>
     <button ng-click="filterFlag();">Flaged items</button>
     <button ng-click="filterNA();">N/A items</button>
+
     <!-- LOADING_INDICATOR_BEGIN -->
-    <div loading-indicator></div>
+    <div tcheck-loading-indicator loading-overlay="loadingOverlay"></div>
     <!-- LOADING_INDICATOR_END -->
+
+    <!-- DIRECTIVE_TERMINAL_TEST_BEGIN -->
+    <div terminal-directive-first terminal-directive-second></div>
+    <!-- DIRECTIVE_TERMINAL_TEST_END -->
+
   </div>
   <script src="scripts/vendor/angular.js"></script>
   <script src="scripts/app.js"></script>
@@ -29,5 +35,6 @@
   <script src="scripts/services/ItemList.js"></script>
   <script src="scripts/services/Item.js"></script>
   <script src="scripts/directives/loadingIndicator.js"></script>
+  <script src="scripts/directives/terminal.js"></script>
 </body>
 </html>

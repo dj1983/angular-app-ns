@@ -3,14 +3,14 @@
 /** Directive */
 
 angular.module('ToyotaTCheck.directives.loadingIndicator', [])
-  .directive('loadingIndicator', function() {
+  .directive('tcheckLoadingIndicator', function() {
 
     return {
       restrict: 'EA',
-      template: '<div ng-class="{ loading: 1, show: loading.isShow }">Loading...</div>',
+      template: '<div ng-class="{ loading: 1, show: loadingOverlay.isShow }">Loading...</div>',
       replace: 1,
-      link: function(scope, iElement, iAttrs) {
-
+      scope: {
+        loadingOverlay: '='
       }
     };
   });
