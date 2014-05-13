@@ -5,11 +5,12 @@
   <title>My AngularJS App</title>
   <link rel="stylesheet" href="styles/main.css"></head>
 <body  ng-app="ToyotaTCheck">
+  <h1>Demo</h1>
   <div class="list" ng-controller="ItemListController">
     <ul data-role="listview" data-inset="true" data-shadow="false" id="specListWarp" class="list">
       <li ng-repeat="category in categories" id="{{category.id}}" ng-if="category.items.length > 0">
         <h2 class="tt-category">- {{category.title}}</h2>
-        <ul><!-- filter: itemFilter() -->
+        <ul>
           <li ng-repeat="item in category.items | itemFilter: itemStatus" ng-include="templateUrl" ng-controller="ItemController"></li>
         </ul>
       </li>
