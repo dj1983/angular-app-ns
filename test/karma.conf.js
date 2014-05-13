@@ -12,6 +12,13 @@ module.exports = function(config) {
     // available frameworks: https://npmjs.org/browse/keyword/karma-adapter
     frameworks: ['jasmine'],
 
+    plugins: [
+        'karma-chrome-launcher',
+        'karma-firefox-launcher',
+        'karma-jasmine',
+        'karma-junit-reporter'
+    ],
+
 
     // list of files / patterns to load in the browser
     files: [
@@ -19,13 +26,14 @@ module.exports = function(config) {
       'app/bower_components/angular-route/angular-route.js',
       'app/bower_components/angular-mocks/angular-mocks.js',
       'app/scripts/*.js',
-      'app/scripts/**/*.js'
+      'app/scripts/**/*.js',
+      'test/spec/**/*.js'
     ],
 
 
     // list of files to exclude
     exclude: [
-      
+      'app/scripts/vendor/*.js'
     ],
 
 
