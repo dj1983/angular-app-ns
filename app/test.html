@@ -1,0 +1,23 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Directive test</title>
+  <style>* {font-size: 1.3em;}</style>
+</head>
+<body  ng-app="FeatureTest" ng-init="rscope = 'root scope'">
+
+  <!-- DIRECTIVE_TERMINAL_TEST_BEGIN -->
+  <div terminal-directive-first terminal-directive-second></div>
+  <!-- DIRECTIVE_TERMINAL_TEST_END -->
+
+  <!-- DIRECTIVE_SCOPE_TEST_BEGIN -->
+  <div child-scope my-attr="rscope"></div>
+  <!-- DIRECTIVE_SCOPE_TEST_END -->
+
+  <script src="scripts/vendor/angular.js"></script>
+  <script src="scripts/app.js"></script>
+  <script src="scripts/directives/terminal.js"></script>
+  <script src="scripts/directives/scope.js"></script>
+</body>
+</html>

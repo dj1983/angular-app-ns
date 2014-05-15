@@ -3,7 +3,8 @@
 <head>
   <meta charset="utf-8">
   <title>My AngularJS App</title>
-  <link rel="stylesheet" href="styles/main.css"></head>
+  <link rel="stylesheet" href="styles/main.css">
+</head>
 <body  ng-app="ToyotaTCheck">
   <h1>Demo</h1>
   <div class="list" ng-controller="ItemListController">
@@ -24,10 +25,6 @@
     <div tcheck-loading-indicator loading-overlay="loadingOverlay"></div>
     <!-- LOADING_INDICATOR_END -->
 
-    <!-- DIRECTIVE_TERMINAL_TEST_BEGIN -->
-    <div terminal-directive-first terminal-directive-second></div>
-    <!-- DIRECTIVE_TERMINAL_TEST_END -->
-
   </div>
   <script src="scripts/vendor/angular.js"></script>
   <script src="scripts/app.js"></script>
@@ -36,7 +33,6 @@
   <script src="scripts/services/ItemList.js"></script>
   <script src="scripts/services/Item.js"></script>
   <script src="scripts/directives/loadingIndicator.js"></script>
-  <script src="scripts/directives/terminal.js"></script>
   <script src="scripts/filters/itemFilter.js"></script>
 </body>
 </html>

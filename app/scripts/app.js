@@ -10,7 +10,6 @@ angular.module('ToyotaTCheck', [
     'ToyotaTCheck.filters.itemFilter',
     /** Directives */
     'ToyotaTCheck.directives.loadingIndicator',
-    'ToyotaTCheck.directives.terminal',  // Test
     /** Controllers */
     'ToyotaTCheck.controllers.ItemListController',
     'ToyotaTCheck.controllers.ItemController'
@@ -18,3 +17,8 @@ angular.module('ToyotaTCheck', [
   .config(function(ItemListProvider) {
     ItemListProvider.setBaseUrl('./backend/');
   });
+
+angular.module('FeatureTest', [
+  'ToyotaTCheck.directives.terminal',
+  'ToyotaTCheck.directives.scope'
+]);
