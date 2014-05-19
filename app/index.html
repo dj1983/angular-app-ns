@@ -20,6 +20,7 @@
     <button ng-click="filterAll();">All items</button>
     <button ng-click="filterFlag();">Flaged items</button>
     <button ng-click="filterNA();">N/A items</button>
+    <button ng-click="doSave();" style="float: right;">Save all</button>
 
     <!-- LOADING_INDICATOR_BEGIN -->
     <div tcheck-loading-indicator loading-overlay="loadingOverlay"></div>
@@ -32,7 +33,10 @@
   <script src="scripts/controllers/ItemController.js"></script>
   <script src="scripts/services/ItemList.js"></script>
   <script src="scripts/services/Item.js"></script>
+  <script src="scripts/services/Firebase.js"></script>
   <script src="scripts/directives/loadingIndicator.js"></script>
   <script src="scripts/filters/itemFilter.js"></script>
+  <script src="bower_components/firebase/firebase.js"></script>
+  <script src="bower_components/angularfire/angularfire.js"></script>
 </body>
 </html>

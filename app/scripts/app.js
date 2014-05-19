@@ -6,13 +6,15 @@ angular.module('ToyotaTCheck', [
     /** Services */
     'ToyotaTCheck.services.ItemList',
     'ToyotaTCheck.services.Item',
+    'ToyotaTCheck.services.Firebase',
     /** Filters */
     'ToyotaTCheck.filters.itemFilter',
     /** Directives */
     'ToyotaTCheck.directives.loadingIndicator',
     /** Controllers */
     'ToyotaTCheck.controllers.ItemListController',
-    'ToyotaTCheck.controllers.ItemController'
+    'ToyotaTCheck.controllers.ItemController',
+    'firebase'
   ])
   .config(function(ItemListProvider) {
     ItemListProvider.setBaseUrl('./backend/');

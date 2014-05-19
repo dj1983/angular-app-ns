@@ -3,7 +3,7 @@
 /** Controller */
 
 angular.module('ToyotaTCheck.controllers.ItemController', [])
-  .controller('ItemController', ['$scope', 'Item', '$log', '$window', function($scope, Item, $log, $window) {
+  .controller('ItemController', ['$scope', '$window', 'Item', 'FirebaseService', '$log', '$q',function($scope, $window, Item, FirebaseService, $log, $q) {
 
     var tplBaseUrl = './scripts/directives/templates/';
 
@@ -11,24 +11,12 @@ angular.module('ToyotaTCheck.controllers.ItemController', [])
       ($scope.item.type === 'sub-category' ? 'unswipable.html' : 'swipable.html');
     $scope.originalItem = angular.copy($scope.item);
 
-    $scope.doSave = function() {
-      $scope.loadingOverlay.isShow = 1;
-      Item.save($scope.item)
-        .then(function(response) {
-          $scope.originalItem = angular.copy($scope.item);
+    // $scope.doSave = function() {
+    //   $scope.categories.$save()
+    // };
 
-        }, function(error) {
-          $log.log(error + ' Revert!');
-          $scope.revert();
-          $window.alert(error + ' Revert!');
-        })
-        .then(function() {
-          $scope.loadingOverlay.isShow = 0;
-        });
-    };
-
-    $scope.revert = function() {
-      angular.copy($scope.originalItem, $scope.item);
-    };
+    // $scope.revert = function() {
+    //   angular.copy($scope.originalItem, $scope.item);
+    // };
 
   }]);
