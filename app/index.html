@@ -7,6 +7,11 @@
 </head>
 <body  ng-app="ToyotaTCheck">
   <h1>Demo</h1>
+  <form action="" class="login-form" ng-hide="userData.isLogin" ng-controller="LoginController">
+    <label for="email" >Email: </label><input type="text" name="email" ng-model="email"><br>
+    <label for="password">Password</label><input type="password" ng-model="password"><br>
+    <button ng-click="login();">Login</button>
+  </form>
   <div class="list" ng-controller="ItemListController">
     <ul data-role="listview" data-inset="true" data-shadow="false" id="specListWarp" class="list">
       <li ng-repeat="category in categories" id="{{category.id}}" ng-if="category.items.length > 0">
@@ -31,12 +36,15 @@
   <script src="scripts/app.js"></script>
   <script src="scripts/controllers/ItemListController.js"></script>
   <script src="scripts/controllers/ItemController.js"></script>
+  <script src="scripts/controllers/LoginController.js"></script>
   <script src="scripts/services/ItemList.js"></script>
   <script src="scripts/services/Item.js"></script>
   <script src="scripts/services/Firebase.js"></script>
+  <script src="scripts/services/User.js"></script>
   <script src="scripts/directives/loadingIndicator.js"></script>
   <script src="scripts/filters/itemFilter.js"></script>
-  <script src="bower_components/firebase/firebase.js"></script>
-  <script src="bower_components/angularfire/angularfire.js"></script>
+  <script src="scripts/vendor/firebase.js"></script>
+  <script src="scripts/vendor/angularfire.js"></script>
+  <script src="scripts/vendor/firebase-simple-login.js"></script>
 </body>
 </html>

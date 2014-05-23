@@ -80,3 +80,7 @@ li {
 .show {
   display: block;
 }
+.login-form label {
+  display: inline-block;
+  width: 80px;
+}
