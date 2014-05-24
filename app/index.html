@@ -7,32 +7,10 @@
 </head>
 <body  ng-app="ToyotaTCheck">
   <h1>Demo</h1>
-  <form action="" class="login-form" ng-hide="userData.isLogin" ng-controller="LoginController">
-    <label for="email" >Email: </label><input type="text" name="email" ng-model="email"><br>
-    <label for="password">Password</label><input type="password" ng-model="password"><br>
-    <button ng-click="login();">Login</button>
-  </form>
-  <div class="list" ng-controller="ItemListController">
-    <ul data-role="listview" data-inset="true" data-shadow="false" id="specListWarp" class="list">
-      <li ng-repeat="category in categories" id="{{category.id}}" ng-if="category.items.length > 0">
-        <h2 class="tt-category">- {{category.title}}</h2>
-        <ul>
-          <li ng-repeat="item in category.items | itemFilter: itemStatus" ng-include="templateUrl" ng-controller="ItemController"></li>
-        </ul>
-      </li>
-    </ul>
-    <hr>
-    <button ng-click="filterAll();">All items</button>
-    <button ng-click="filterFlag();">Flaged items</button>
-    <button ng-click="filterNA();">N/A items</button>
-    <button ng-click="doSave();" style="float: right;">Save all</button>
-
-    <!-- LOADING_INDICATOR_BEGIN -->
-    <div tcheck-loading-indicator loading-overlay="loadingOverlay"></div>
-    <!-- LOADING_INDICATOR_END -->
-
-  </div>
+  <div ng-view></div>
+  <!-- JavaScript libraries -->
   <script src="scripts/vendor/angular.js"></script>
+  <script src="scripts/vendor/angular-route.js"></script>
   <script src="scripts/app.js"></script>
   <script src="scripts/controllers/ItemListController.js"></script>
   <script src="scripts/controllers/ItemController.js"></script>

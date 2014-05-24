@@ -7,8 +7,11 @@ angular.module('ToyotaTCheck.services.Firebase', [])
     var ref = new Firebase('https://tcheckdemo.firebaseio.com/categories');
 
     return {
-      'ref': ref,
-      'fbRef': $firebase(ref)
+      ref: ref,
+      fbRef: $firebase(ref),
+      resetFbRef: function() {
+        this.fbRef = $firebase(this.ref);
+      }
     };
 
   }]);

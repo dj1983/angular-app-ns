@@ -80,7 +80,16 @@ li {
 .show {
   display: block;
 }
+.login {
+  text-align: center;
+}
 .login-form label {
   display: inline-block;
-  width: 80px;
+  text-align: right;
+  width: 120px;
+  padding-top: 10px;
+  padding-right: 10px;
+}
+.login button {
+  margin-top: 10px;
 }

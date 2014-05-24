@@ -2,6 +2,7 @@
   "globalstrict": true,
   "globals": {
     "angular": false,
-    "Firebase": false
+    "Firebase": false,
+    "FirebaseSimpleLogin": false
   }
 }

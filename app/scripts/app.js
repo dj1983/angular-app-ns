@@ -3,6 +3,7 @@
 
 // Declare app level module which depends on filters, and services
 angular.module('ToyotaTCheck', [
+    'ngRoute',
     /** Services */
     'ToyotaTCheck.services.ItemList',
     'ToyotaTCheck.services.Item',
@@ -18,10 +19,29 @@ angular.module('ToyotaTCheck', [
     'ToyotaTCheck.controllers.LoginController',
     'firebase'
   ])
-  .config(function(ItemListProvider) {
+  .config(['ItemListProvider', function(ItemListProvider) {
     ItemListProvider.setBaseUrl('./backend/');
-  });
+  }])
+  .config(['$routeProvider', function($routeProvider) {
+    $routeProvider
+      .when('/login', {
+        templateUrl: 'views/login.html',
+        controller: 'LoginController'
+      })
+      .when('/list', {
+        templateUrl: 'views/list.html',
+        controller: 'ItemListController'
+      })
+      .otherwise({
+        redirectTo: '/login'
+      });
+  }]);
 
+
+
+/***************************************** 
+ *            Test cases
+ *****************************************/
 angular.module('FeatureTest', [
   'ToyotaTCheck.directives.terminal',
   'ToyotaTCheck.directives.scope'
