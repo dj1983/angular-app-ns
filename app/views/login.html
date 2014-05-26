@@ -1,10 +1,10 @@
 <div class="login" ng-init="checkLogin();">
   <p class="msg">{{errorMsg}}</p>
   <form action="" class="login-form">
-    <label for="email" >Email: </label><input autofocus="autofocus" type="text" name="email" id="email" ng-model="email"><br>
-    <label for="password">Password</label><input type="password" name="password" id="password" ng-model="password"><br>
+    <label for="email" >Email:</label><input autofocus="autofocus" type="text" name="email" id="email" ng-model="email"><br>
+    <label for="password">Password:</label><input type="password" name="password" id="password" ng-model="password"><br>
     <input type="checkbox" name="remember" id="remember"><label for="remember">Remember me</label><br>
-    <button ng-click="login();">Login</button>
+    <button ng-click="login();" id="login_btn" ng-disabled="loginDisabled">Login</button>
     <button disabled="disabled">Register</button>
   </form>
 </div>
