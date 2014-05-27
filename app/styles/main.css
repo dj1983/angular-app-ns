@@ -100,3 +100,13 @@ input[type=checkbox],
 .login button {
   margin-top: 10px;
 }
+/******************
+  Form Validation
+******************/
+input.ng-invalid.ng-dirty {
+  background-color: #FA787E;
+}
+
+input.ng-valid.ng-dirty {
+  background-color: #78FA89;
+}
