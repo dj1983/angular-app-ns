@@ -6,9 +6,7 @@ angular.module('ToyotaTCheck.controllers.LoginController', [])
   .controller('LoginController', ['$scope', 'User', '$location', '$log', function($scope, User, $location, $log) {
     //User.logout();
 
-    $scope.userData = User.userData;
-    $scope.errorMsg = "";
-    $scope.User = User;
+    $scope.errorMsg = '';
     $scope.loginDisabled = false;
 
     // Test use
@@ -28,10 +26,17 @@ angular.module('ToyotaTCheck.controllers.LoginController', [])
       User.login($scope.email, $scope.password, 0);
     };
 
-    $scope.$watch('User.isLogin()', function(newValue, oldValue) {
+    $scope.$watch(function() { return User.isLogin(); }, function(newValue, oldValue) {
       if (newValue === true) {
         $scope.loginDisabled = false;
+        $scope.errorMsg = '';
         $location.path('/list');
       }
     });
+
+    $scope.$watch(function() { return User.getErrorMsg(); }, function(newValue, oldValue) {
+      $scope.errorMsg = newValue;
+      $scope.loginDisabled = false;
+    });
+
   }]);

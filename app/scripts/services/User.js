@@ -3,24 +3,28 @@
 /* Service */
 
 angular.module('ToyotaTCheck.services.User', [])
-  .factory('User', ['FirebaseService', '$q', '$firebase', '$location', '$log', function(FirebaseService, $q, $firebase, $location, $log) {
-    var userData = {
-        isLogin: false,
-        userObjectData: null,
-        errorMsg: ''
-      },
-      auth = new FirebaseSimpleLogin(FirebaseService.ref, function(error, user) {
-        var errorMsg = '';
+  .factory('User', ['FirebaseService', '$firebase', '$location', '$rootScope', '$log',
+    function(FirebaseService, $firebase, $location, $rootScope, $log) {
+      var userData = {
+          isLogin: false,
+          userObjectData: null,
+          errorMsg: ''
+        },
+        auth = new FirebaseSimpleLogin(FirebaseService.ref, function(error, user) {
+          $rootScope.$apply(_callback(error, user));
+        });
+
+      function _callback(error, user) {
 
         FirebaseService.resetFbRef();
 
-        if(error) {
+        if (error) {
           // An error occurred while attempting login
           // Error code: <https://www.firebase.com/docs/security/simple-login-overview.html#Full Error Listing>
 
           userData.isLogin = false;
 
-          switch(error.code) {
+          switch (error.code) {
             case 'INVALID_EMAIL':
               userData.errorMsg = 'The specified email address is incorrect.';
               break;
@@ -45,40 +49,31 @@ angular.module('ToyotaTCheck.services.User', [])
           // User is logged out
 
           userData.isLogin = false;
-          userData.errorMsg = 'User logout.';
         }
-      });
-
-    return {
-      isLogin: function() {
-        return userData.isLogin;
-      },
-
-      authorize: function() {
-        var deferred = $q.defer();
-
-        if (this.isLogin()) {
-          deferred.resolve('yes');
-
-        } else {
-          deferred.resolve('no');
-        }
-
-        return deferred.promise;
-      },
-
-      login: function(email, password, isRememberMe) {
-        if (!userData.isLogin) {
-          auth.login('password', {
-            'email': email,
-            'password': password,
-            rememberMe: isRememberMe
-          });
-        }
-      },
-
-      logout: function() {
-        auth.logout();
       }
-    };
-  }]);
+
+      return {
+        getErrorMsg: function() {
+          return userData.errorMsg;
+        },
+        getUserObjectData: function() {
+          return userData.userObjectData;
+        },
+        isLogin: function() {
+          return userData.isLogin;
+        },
+        login: function(email, password, isRememberMe) {
+          if (!userData.isLogin) {
+            auth.login('password', {
+              'email': email,
+              'password': password,
+              rememberMe: isRememberMe
+            });
+          }
+        },
+        logout: function() {
+          auth.logout();
+        }
+      };
+    }
+  ]);

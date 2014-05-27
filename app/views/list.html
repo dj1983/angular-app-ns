@@ -1,4 +1,8 @@
-<div class="list" ng-init="">
+<div class="list" ng-init="authorize();">
+  <div style="text-align: right;">
+    <span>Current user:  <b>{{email}}</b></span>
+    <button ng-click="logout();">Logout</button>
+  </div>
   <ul data-role="listview" data-inset="true" data-shadow="false" id="specListWarp" class="list">
     <li ng-repeat="category in categories" id="{{category.id}}" ng-if="category.items.length >
       0">
@@ -13,7 +17,7 @@
   <button ng-click="filterFlag();">Flaged items</button>
   <button ng-click="filterNA();">N/A items</button>
   <button ng-click="doSave();" style="float: right;">Save all</button><br>
-  <button ng-click="logout();" style="float: right;">Logout</button>
+  
 
   <!-- LOADING_INDICATOR_BEGIN -->
   <div tcheck-loading-indicator loading-overlay="loadingOverlay"></div>
