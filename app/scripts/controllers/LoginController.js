@@ -23,8 +23,10 @@ angular.module('ToyotaTCheck.controllers.LoginController', [])
     };
 
     $scope.login = function() {
-      $scope.loginDisabled = true;
-      User.login($scope.email, $scope.password, 0);
+      if ($scope.loginForm.$error.required === false) {
+        $scope.loginDisabled = true;
+        User.login($scope.email, $scope.password, 0);
+      }
     };
 
     $scope.$watch(function() { return User.isLogin(); }, function(newValue, oldValue) {

@@ -81,7 +81,7 @@ li {
   display: block;
 }
 .login {
-  width: 300px;
+  width: 400px;
   margin: 0px auto;
 }
 .login label[for=email],
@@ -110,6 +110,7 @@ input.ng-invalid.ng-dirty {
 input.ng-valid.ng-dirty {
   background-color: #78FA89;
 }
-.login .msg {
-  color: red;
+.login .msg,
+.login .error {
+  color: #FA787E;
 }
