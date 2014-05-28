@@ -8,6 +8,7 @@ angular.module('ToyotaTCheck.controllers.LoginController', [])
 
     $scope.errorMsg = '';
     $scope.loginDisabled = false;
+    $scope.isRememberMe = true;
 
     // Test use
     $scope.email = 'user@fabricgroup.com.au';

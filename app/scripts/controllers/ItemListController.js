@@ -9,6 +9,16 @@ angular.module('ToyotaTCheck.controllers.ItemListController', [])
     $scope.loadingOverlay = {
       isShow: 0
     };
+    $scope.options = [{
+      label: 'All items',
+      value: 'all'
+    }, {
+      label: 'Flaged items',
+      value: 'flag'
+    }, {
+      label: 'N/A items',
+      value: 'na'
+    }];
 
     $scope.filterAll = function() {
       $scope.itemStatus = 'all';

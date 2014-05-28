@@ -13,11 +13,13 @@
     </li>
   </ul>
   <hr>
+  <span> Filter by: </span>
   <button ng-click="filterAll();">All items</button>
   <button ng-click="filterFlag();">Flaged items</button>
-  <button ng-click="filterNA();">N/A items</button>
+  <button ng-click="filterNA();">N/A items</button><br>
+  <span> Filter by: </span><select ng-model="itemStatus" ng-options="option.value as option.label for option in options"></select><br>
+  <span> Filter by: </span><input type="radio" ng-model="itemStatus" value="all"/> All items <input type="radio" ng-model="itemStatus" value="flag"/>Flaged items <input type="radio" ng-model="itemStatus" value="na"/> N/A items
   <button ng-click="doSave();" style="float: right;" ng-disabled="isGuest">Save all</button><br>
-  
 
   <!-- LOADING_INDICATOR_BEGIN -->
   <div tcheck-loading-indicator loading-overlay="loadingOverlay"></div>
