@@ -11,7 +11,7 @@ angular.module('ToyotaTCheck.controllers.LoginController', [])
 
     // Test use
     $scope.email = 'user@fabricgroup.com.au';
-    $scope.password = '007';
+    $scope.password = 'user';
 
     $scope.authorize = function() {
       User.authorize().then(function(status) {

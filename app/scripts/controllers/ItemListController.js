@@ -34,10 +34,12 @@ angular.module('ToyotaTCheck.controllers.ItemListController', [])
         });
     };
 
+    $scope.isGuest = true;
+
     $scope.authorize = function() {
       if (User.isLogin()) {
-        $log.log(User.getUserObjectData());
         $scope.email = User.getUserObjectData().email;
+        $scope.isGuest = ($scope.email === 'guest@fabricgroup.com.au');
       } else {
         $location.path('/login');
       }
