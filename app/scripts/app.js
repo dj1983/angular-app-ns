@@ -17,6 +17,7 @@ angular.module('ToyotaTCheck', [
     'ToyotaTCheck.controllers.ItemListController',
     'ToyotaTCheck.controllers.ItemController',
     'ToyotaTCheck.controllers.LoginController',
+    'ToyotaTCheck.controllers.CategoryController',
     'firebase'
   ])
   .config(['ItemListProvider', function(ItemListProvider) {

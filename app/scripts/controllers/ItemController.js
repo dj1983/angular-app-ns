@@ -11,12 +11,8 @@ angular.module('ToyotaTCheck.controllers.ItemController', [])
       ($scope.item.type === 'sub-category' ? 'unswipable.html' : 'swipable.html');
     $scope.originalItem = angular.copy($scope.item);
 
-    // $scope.doSave = function() {
-    //   $scope.categories.$save()
-    // };
-
-    // $scope.revert = function() {
-    //   angular.copy($scope.originalItem, $scope.item);
-    // };
+    // $scope.item.$on('child_changed', function(childSnapshot, prevChildName) {
+    //   $log.log(childSnapshot, '   ', prevChildName);
+    // });
 
   }]);

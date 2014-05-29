@@ -4,8 +4,7 @@
     <button ng-click="logout();">Logout</button>
   </div>
   <ul data-role="listview" data-inset="true" data-shadow="false" id="specListWarp" class="list">
-    <li ng-repeat="category in categories" id="{{category.id}}" ng-if="category.items.length >
-      0">
+    <li ng-repeat="category in categories" id="{{category.id}}" ng-if="category.items.length > 0" CategoryController>
       <h2 class="tt-category">- {{category.title}}</h2>
       <ul>
         <li ng-repeat="item in category.items | itemFilter: itemStatus" ng-include="templateUrl" ng-controller="ItemController"></li>
