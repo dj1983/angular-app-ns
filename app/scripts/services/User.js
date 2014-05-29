@@ -10,13 +10,13 @@ angular.module('ToyotaTCheck.services.User', [])
           userObjectData: null,
           errorMsg: ''
         },
-        auth = new FirebaseSimpleLogin(FirebaseService.ref, function(error, user) {
+        auth = new FirebaseSimpleLogin(FirebaseService.root, function(error, user) {
           $rootScope.$apply(_callback(error, user));
         });
 
       function _callback(error, user) {
 
-        FirebaseService.resetFbRef();
+        // FirebaseService.resetFbRef();
 
         if (error) {
           // An error occurred while attempting login

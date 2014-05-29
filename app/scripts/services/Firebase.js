@@ -4,16 +4,10 @@
 
 angular.module('ToyotaTCheck.services.Firebase', [])
   .factory('FirebaseService', ['$firebase', function($firebase) {
-    var ref = new Firebase('https://tcheckdemo.firebaseio.com/categories');
-
-    function resetFbRef() {
-      this.fbRef = $firebase(this.ref);
-    }
+    var root = new Firebase('https://tcheckdemo.firebaseio.com');
 
     return {
-      ref: ref,
-      fbRef: $firebase(ref),
-      resetFbRef: resetFbRef
+      root: root
     };
 
   }]);

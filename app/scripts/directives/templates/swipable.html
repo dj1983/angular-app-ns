@@ -1,9 +1,9 @@
-<div ng-class="{ swipe: 1, 'subsub-category': item.items.length > 0 }">
+<div ng-class="{ swipe: 1, 'subsub-category': items.length > 0 }">
   <span class="title">{{item.title}}</span>
   <span class="value"><input type="text" ng-model="item.value" ng-disabled="isGuest"></span>
 </div>
-<ul class="subInfoGroup" ng-if="item.items.length > 0">
-  <li ng-repeat="item in item.items | itemFilter: itemStatus" ng-controller="ItemController">
+<ul class="subInfoGroup">
+  <li ng-repeat="item in item.items" ng-controller="ItemController">
     <div class="swipe">
       <span class="title">{{item.title}}</span>
       <span class="value"><input type="text" ng-model="item.value" ng-disabled="isGuest"></span>

@@ -17,13 +17,15 @@
       "id": "1",
       "category": "1",
       "title": "Model year-1",
-      "value": "2007"
+      "value": "2007",
+      "status": "na"
     },
     "2": {
       "id": "2",
       "category": "1",
       "title": "Version information-2",
       "value": "1.0.0",
+      "status": "",
       "children": ["3"]
     },
     "3": {
@@ -31,12 +33,15 @@
       "category": "1",
       "parent": "2",
       "title": "Release date-3",
-      "value": "20/03/2014"
+      "value": "20/03/2014",
+      "status": "flag"
     },
     "4": {
       "id": "4",
       "category": "2",
       "title": "Exterior features-4",
+      "type": "sub-category",
+      "status": "",
       "children": ["5", "6", "7", "8", "9", "10"]
     },
     "5": {
@@ -44,6 +49,7 @@
       "category": "2",
       "title": "See through roof-5",
       "value": "See through roof",
+      "status": "",
       "parent": "4"
     },
     "6": {
@@ -51,6 +57,7 @@
       "category": "2",
       "title": "Solar powered roof panel-6",
       "value": "Solar powered roof panel",
+      "status": "flag",
       "parent": "4"
     },
     "7": {
@@ -58,6 +65,7 @@
       "category": "2",
       "title": "Doors-7",
       "value": "Doors",
+      "status": "",
       "children": ["8", "9", "10"]
     },
     "8": {
@@ -65,6 +73,7 @@
       "category": "2",
       "title": "door type-8",
       "value": "door type",
+      "status": "na",
       "parent": "7"
     },
     "9": {
@@ -72,6 +81,7 @@
       "category": "2",
       "title": "door close system-9",
       "value": "door close system",
+      "status": "flag",
       "parent": "7"
     },
     "10": {
@@ -79,6 +89,7 @@
       "category": "2",
       "title": "electric doors-10",
       "value": "electric doors",
+      "status": "",
       "parent": "7"
     }
   }
