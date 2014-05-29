@@ -6,3 +6,5 @@ Then you can use the app via: <http://localhost/angular-app-ns/app/>
 
 `$npm install`  
 `$bower install`
+
+END
