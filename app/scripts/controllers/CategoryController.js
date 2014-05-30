@@ -3,15 +3,27 @@
 /** Controller */
 
 angular.module('ToyotaTCheck.controllers.CategoryController', [])
-  .controller('CategoryController', ['$scope', 'FirebaseService', '$firebase', '$window', '$log',
-    function($scope, FirebaseService, $firebase, $window, $log) {
+  .controller('CategoryController', [
+    '$scope',
+    '$q',
+    'FirebaseService',
+    '$firebase',
+    '$window',
+    '$log',
+    function($scope, $q, FirebaseService, $firebase, $window, $log) {
+      $scope.childItems = [];
 
-      // "items": ["4", "5", "6", "7", "8", "9", "10"]
-      $scope.items = [];
-
-      angular.forEach($scope.category.items, function(value, key) {
-        // $log.log(value);
-        $scope.items.push($firebase(FirebaseService.root.child('/items/' + value)));
+      $firebase(FirebaseService.root.child('items')).$on('loaded', function(childSnapshot) {
+        angular.forEach($scope.category.directItems, function(value, key) {
+          $scope.childItems.push(childSnapshot[value]);
+        });
+        // $log.log('$scope.childItems ', $scope.childItems);
+        // function g(item) {
+        //   var arr = [];
+        //   angular.forEach(ids, function(value) {
+        //     arr.push(childSnapshot[value]);
+        //   });
+        // }
       });
 
     }

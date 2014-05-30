@@ -6,6 +6,7 @@ angular.module('ToyotaTCheck.controllers.ItemListController', [])
   .controller('ItemListController', ['$scope', 'FirebaseService', '$firebase', 'User', '$location', '$log',
     function($scope, FirebaseService, $firebase, User, $location, $log) {
       $scope.categories = $firebase(FirebaseService.root.child('categories'));
+      $scope.items = $firebase(FirebaseService.root.child('items'));
       $scope.itemStatus = 'all';
       $scope.loadingOverlay = {
         isShow: 0
@@ -33,18 +34,6 @@ angular.module('ToyotaTCheck.controllers.ItemListController', [])
         $scope.itemStatus = 'na';
       };
 
-      $scope.doSave = function() {
-        $scope.loadingOverlay.isShow = 1;
-        $scope.categories.$save()
-          .then(function(ref) {
-            $scope.loadingOverlay.isShow = 0;
-            $log.log(ref);
-          }, function(err) {
-            $scope.loadingOverlay.isShow = 0;
-            $log.log(err);
-          });
-      };
-
       $scope.isGuest = true;
 
       $scope.authorize = function() {
@@ -68,9 +57,8 @@ angular.module('ToyotaTCheck.controllers.ItemListController', [])
         }
       });
 
-      $scope.categories.$on('child_changed', function(childSnapshot, prevChildName) {
-        $log.log(childSnapshot, '   ', prevChildName);
+      $scope.items.$on('child_changed', function(childSnapshot) {
+        // $log.log(key, ' here');
       });
-
     }
   ]);

@@ -9,6 +9,7 @@ angular.module('ToyotaTCheck', [
     'ToyotaTCheck.services.Item',
     'ToyotaTCheck.services.Firebase',
     'ToyotaTCheck.services.User',
+    'ToyotaTCheck.services.Util',
     /** Filters */
     'ToyotaTCheck.filters.itemFilter',
     /** Directives */

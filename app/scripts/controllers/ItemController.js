@@ -12,32 +12,48 @@ angular.module('ToyotaTCheck.controllers.ItemController', [])
     '$q',
     '$log',
     function($scope, $window, Item, FirebaseService, $firebase, $q, $log) {
+      // directItems: ["4"]
+      // $scope.item = {
+      //   "id": "4",
+      //   "category": "2",
+      //   "title": "Exterior features-4",
+      //   "type": "sub-category",
+      //   "status": "",
+      //   "children": ["5", "6", "7"]
+      // }
+      $log.log('item ', $scope.item);
 
       var tplBaseUrl = './scripts/directives/templates/';
-      $log.log($scope.item);
 
       $scope.templateUrl = tplBaseUrl +
         ($scope.item.type === 'sub-category' ? 'unswipable.html' : 'swipable.html');
-      // $scope.originalItem = angular.copy($scope.item);
 
-      // $scope.item.$on('child_changed', function(childSnapshot, prevChildName) {
-      //   $log.log(childSnapshot, '   ', prevChildName);
+      $scope.childItems = [];
+
+      $firebase(FirebaseService.root.child('items')).$on('loaded', function(childSnapshot) {
+        angular.forEach($scope.item.children, function(value, key) {
+          $scope.childItems.push(childSnapshot[value]);
+        });
+        $log.log('$scope.childItems ', $scope.childItems);
+      });
+
+      // https://tcheck.firebaseio.com/items/1
+      $scope.item = $firebase(FirebaseService.root.child('/items/' + $scope.item.id));
+
+      // $scope.isSaveBtnDisabled = true;
+
+
+      // $scope.item.$on('change', function(key) {
+      //   $log.log('ItemController :: ', key, ' :: changed');
       // });
 
-      // $scope.item.items = [];
-
-      // $scope.item is '/items/1'
-      // $log.log('item: ', $scope.item);
-      // $log.log($scope.item.children);
-      $scope.items = [];
-
-      if ($scope.item.children && $scope.item.children.length > 0) {
-        angular.forEach($scope.item.children, function(value, key) {
-          $scope.items.push($firebase(FirebaseService.root.child('/items/' + value)));
-        });
-      }
-      // $log.log('item: ', $scope.item);
-      
+      // $scope.saveItemValue = function() {
+      //   $scope.isSaveBtnDisabled = true;
+      //   $scope.item.$save()
+      //     .then(function() {
+      //       $scope.isSaveBtnDisabled = false;
+      //     });
+      // };
 
     }
   ]);
