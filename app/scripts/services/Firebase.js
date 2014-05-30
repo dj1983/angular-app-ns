@@ -3,11 +3,18 @@
 /* Service */
 
 angular.module('ToyotaTCheck.services.Firebase', [])
-  .factory('FirebaseService', ['$firebase', function($firebase) {
-    var root = new Firebase('https://tcheckdemo.firebaseio.com');
+  .provider('FirebaseService', function() {
+    var firebaseUrl = '';
 
-    return {
-      root: root
+    this.setFirebaseUrl = function(url) {
+      firebaseUrl = url;
     };
+    this.$get = ['$firebase', function($firebase) {
+      var root = new Firebase(firebaseUrl);
 
-  }]);
+      return {
+        root: root
+      };
+    }];
+
+  });

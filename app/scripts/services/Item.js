@@ -3,35 +3,38 @@
 /* Service */
 
 angular.module('ToyotaTCheck.services.Item', [])
-  .factory('Item', ['$http', '$q', '$log', function($http, $q, $log) {
+  .factory('Item', [
+    '$http',
+    '$q',
+    '$log',
+    function($http, $q, $log) {
 
-    var baseUrl = './backend/';
+      var baseUrl = './backend/';
 
-    return {
-      save: function(item) {
+      return {
+        save: function(item) {
 
-        return $http.post(baseUrl + 'service.php', {
-          'data': {
-            'id': item.id,
-            'title': item.title,
-            'type': item.type
-          }
+          return $http.post(baseUrl + 'service.php', {
+            'data': {
+              'id': item.id,
+              'title': item.title,
+              'type': item.type
+            }
 
-        }).then(function(response) {
-          var data = response.data;
+          }).then(function(response) {
+            var data = response.data;
 
-          if (data.status == 'failure') {
-            return $q.reject(data.msg);
+            if (data.status == 'failure') {
+              return $q.reject(data.msg);
 
-          } else {
-            return data;
-          }
+            } else {
+              return data;
+            }
 
-        }, function(error) {
-          return $q.reject(error);
-        });
-
-      }
-    };
+          }, function(error) {
+            return $q.reject(error);
+          });
+        }
+      };
 
   }]);

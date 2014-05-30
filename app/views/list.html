@@ -4,11 +4,10 @@
     <button ng-click="logout();">Logout</button>
   </div>
   <ul data-role="listview" data-inset="true" data-shadow="false" id="specListWarp" class="list">
-    <!-- ng-if="category.items.length > 0" -->
     <li ng-repeat="category in categories" id="{{category.id}}" ng-controller="CategoryController" ng-if="category.directItems.length > 0">
       <h2 class="tt-category">- {{category.title}}</h2>
       <ul>
-        <li ng-repeat="item in childItems" ng-include="templateUrl" ng-controller="ItemController"></li>
+        <li ng-repeat="item in childItems | itemFilter: itemStatus" ng-include="templateUrl" ng-controller="ItemController"></li>
       </ul>
     </li>
   </ul>
@@ -18,6 +17,7 @@
   <button ng-click="filterFlag();">Flaged items</button>
   <button ng-click="filterNA();">N/A items</button><br>
   <span> Filter by: </span><select ng-model="itemStatus" ng-options="option.value as option.label for option in options"></select><br>
+  <span> Filter by: </span><input type="radio" ng-model="itemStatus" value="all"/> All items <input type="radio" ng-model="itemStatus" value="flag"/>Flaged items <input type="radio" ng-model="itemStatus" value="na"/> N/A items
 
   <!-- LOADING_INDICATOR_BEGIN -->
   <div tcheck-loading-indicator loading-overlay="loadingOverlay"></div>

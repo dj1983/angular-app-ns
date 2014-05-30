@@ -24,6 +24,9 @@ angular.module('ToyotaTCheck', [
   .config(['ItemListProvider', function(ItemListProvider) {
     ItemListProvider.setBaseUrl('./backend/');
   }])
+  .config(['FirebaseServiceProvider', function(FirebaseServiceProvider) {
+    FirebaseServiceProvider.setFirebaseUrl('https://tcheck.firebaseio.com');
+  }])
   .config(['$routeProvider', function($routeProvider) {
     $routeProvider
       .when('/login', {
