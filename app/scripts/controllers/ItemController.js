@@ -17,8 +17,23 @@ angular.module('ToyotaTCheck.controllers.ItemController', [])
       var tplBaseUrl = './scripts/directives/templates/';
 
       $scope.isSaveBtnDisabled = false;
+      $scope.years = [];
+
       $scope.templateUrl = tplBaseUrl +
         ($scope.item.type === 'sub-category' ? 'unswipable.html' : 'swipable.html');
+
+      Util.getYears().then(function(years) {
+        $scope.years = years;
+      });
+      switch ($scope.item.fieldType) {
+      case 'list':
+        $scope.inputFieldTemplateUrl = tplBaseUrl + 'iList.html';
+        $scope.years = Util.getYears;
+        break;
+      default:
+        $scope.inputFieldTemplateUrl = tplBaseUrl + 'iText.html';
+        break;
+      }
 
       $scope.childItems = [];
       $firebase(FirebaseService.root.child('items'))

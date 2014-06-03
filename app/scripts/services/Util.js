@@ -4,8 +4,11 @@
 
 angular.module('ToyotaTCheck.services.Util', [])
   .factory('Util', [
+    'FirebaseService',
+    '$firebase',
+    '$q',
     '$log',
-    function($log) {
+    function(FirebaseService, $firebase, $q, $log) {
 
     return {
       /**
@@ -25,6 +28,16 @@ angular.module('ToyotaTCheck.services.Util', [])
         });
 
         return itemTree;
+      },
+      getYears: function() {
+        var deferred = $q.defer(),
+          years = $firebase(FirebaseService.root.child('data/years'));
+
+        years.$on('loaded', function(childSnapshot) {
+          deferred.resolve(childSnapshot);
+        });
+
+        return deferred.promise;
       }
     };
   }]);

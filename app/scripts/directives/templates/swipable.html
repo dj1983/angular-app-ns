@@ -1,7 +1,7 @@
 <div ng-class="{ swipe: 1, 'subsub-category': item.children.length > 0 }">
   <span class="title">{{item.title}}</span>
   <span class="value">
-    <input type="text" ng-model="item.value" ng-disabled="isGuest">
+    <span ng-include="inputFieldTemplateUrl"></span>
     <button ng-click="saveItemValue();" ng-disabled="isSaveBtnDisabled || isGuest">Save</button>
   </span>
 </div>
@@ -10,7 +10,7 @@
     <div class="swipe">
       <span class="title">{{item.title}}</span>
       <span class="value">
-        <input type="text" ng-model="item.value" ng-disabled="isGuest">
+        <span ng-include="inputFieldTemplateUrl"></span>
         <button ng-click="saveItemValue();" ng-disabled="isSaveBtnDisabled || isGuest">Save</button>
       </span>
     </div>
