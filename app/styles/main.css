@@ -40,23 +40,28 @@ li {
 .subsub-category {
   background-color: #ffffbe;
   color: #000;
+  
 }
 .sub-category {
   background-color: #3076b7;
   color: #fff;
   font-size: 1.5em;
+  padding: 10px 0px 10px 20px;
 }
 .value, .edit {
   float: right;
 }
 .swipe {
   font-size: 1.5em;
-}
-.swipe, .sub-category {
   padding: 5px;
 }
-.subGroup, .subInfoGroup {
-  padding-left: 25px;
+.subGroup .title,
+.subInfoGroup .title{
+  /*padding-left: 25px;*/
+  padding-left: 20px;
+}
+.subGroup .subInfoGroup .title {
+  padding-left: 40px;
 }
 .list {
   position: relative;
