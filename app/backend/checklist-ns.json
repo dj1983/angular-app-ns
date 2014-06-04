@@ -38,7 +38,8 @@
       "parent": "2",
       "title": "Release date-3",
       "value": "20/03/2014",
-      "status": "flag"
+      "status": "flag",
+      "fieldType": "date"
     },
     "4": {
       "id": "4",

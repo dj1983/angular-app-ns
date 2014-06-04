@@ -14,6 +14,7 @@ angular.module('ToyotaTCheck', [
     'ToyotaTCheck.filters.itemFilter',
     /** Directives */
     'ToyotaTCheck.directives.loadingIndicator',
+    'ToyotaTCheck.directives.datepicker',
     /** Controllers */
     'ToyotaTCheck.controllers.ItemListController',
     'ToyotaTCheck.controllers.ItemController',

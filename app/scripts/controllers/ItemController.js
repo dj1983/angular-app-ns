@@ -30,6 +30,9 @@ angular.module('ToyotaTCheck.controllers.ItemController', [])
         $scope.inputFieldTemplateUrl = tplBaseUrl + 'iList.html';
         $scope.years = Util.getYears;
         break;
+      case 'date':
+        $scope.inputFieldTemplateUrl = tplBaseUrl + 'iDatepicker.html';
+        break;
       default:
         $scope.inputFieldTemplateUrl = tplBaseUrl + 'iText.html';
         break;

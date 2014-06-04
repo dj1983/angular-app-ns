@@ -6,7 +6,8 @@
   "license": "MIT",
   "dependencies": {
     "firebase": "~1.0.15",
-    "angularfire": "~0.7.1"
+    "angularfire": "~0.7.1",
+    "jqueryui": "~1.10.4"
   },
   "authors": [
     "zhongsp <patrick.holynova@gmail.com>"
