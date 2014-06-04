@@ -119,3 +119,10 @@ input[type=checkbox],
 .login .error {
   color: #FA787E;
 }
+/** Log page */
+.log {
+  padding-left: 30px;
+}
+.log li {
+  list-style: inherit;
+}

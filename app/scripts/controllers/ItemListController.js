@@ -61,5 +61,9 @@ angular.module('ToyotaTCheck.controllers.ItemListController', [])
           $location.path('/login');
         }
       });
+
+      $scope.viewLog = function() {
+        $location.path('/log');
+      };
     }
   ]);

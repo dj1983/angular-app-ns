@@ -1,4 +1,7 @@
 <div class="list" ng-init="authorize();">
+  <div style="float: left">
+  <button ng-click="viewLog();">View logs</button>
+  </div>
   <div style="text-align: right;">
     <span>Current user:  <b>{{email}}</b></span>
     <button ng-click="logout();">Logout</button>

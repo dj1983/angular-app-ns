@@ -5,14 +5,15 @@
 angular.module('ToyotaTCheck.controllers.ItemController', [])
   .controller('ItemController', [
     '$scope',
-    '$window',
-    'Item',
-    'FirebaseService',
-    'Util',
     '$firebase',
-    '$q',
     '$log',
-    function($scope, $window, Item, FirebaseService, Util, $firebase, $q, $log) {
+    '$q',
+    '$window',
+    'FirebaseService',
+    'Item',
+    'Log',
+    'Util',
+    function($scope, $firebase, $log, $q, $window, FirebaseService, Item, Log, Util) {
 
       var tplBaseUrl = './scripts/directives/templates/';
 
@@ -29,7 +30,7 @@ angular.module('ToyotaTCheck.controllers.ItemController', [])
       switch ($scope.item.fieldType) {
       case 'list':
         $scope.inputFieldTemplateUrl = tplBaseUrl + 'iList.html';
-        $scope.years = Util.getYears;
+        $scope.years = Util.getYears();
         break;
       case 'date':
         $scope.inputFieldTemplateUrl = tplBaseUrl + 'iDatepicker.html';
@@ -47,8 +48,16 @@ angular.module('ToyotaTCheck.controllers.ItemController', [])
 
       $scope.item = $firebase(FirebaseService.root.child('/items/' + $scope.item.id));
 
+      // This event is triggered every time there is a remote change 
+      // in the data which was applied to the local object.
       $scope.item.$on('change', function(key) {
-        $log.log('ItemController :: ', key, ' :: changed');
+        $log.log('change :: ', key, ' :: changed to ', $scope.item[key]);
+        Log.add({
+          id: $scope.item.id,
+          title: $scope.item.title,
+          key: key,
+          value: $scope.item[key]
+        });
       });
 
       $scope.saveItemValue = function() {
