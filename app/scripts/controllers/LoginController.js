@@ -49,6 +49,5 @@ angular.module('ToyotaTCheck.controllers.LoginController', [])
         $scope.errorMsg = newValue;
         $scope.loginDisabled = false;
       });
-
     }
   ]);

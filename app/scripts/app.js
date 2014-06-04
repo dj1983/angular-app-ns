@@ -1,6 +1,5 @@
 'use strict';
 
-
 // Declare app level module which depends on filters, and services
 angular.module('ToyotaTCheck', [
     'ngRoute',
@@ -42,13 +41,3 @@ angular.module('ToyotaTCheck', [
         redirectTo: '/login'
       });
   }]);
-
-
-
-/***************************************** 
- *            Test cases
- *****************************************/
-angular.module('FeatureTest', [
-  'ToyotaTCheck.directives.terminal',
-  'ToyotaTCheck.directives.scope'
-]);

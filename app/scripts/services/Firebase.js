@@ -9,12 +9,11 @@ angular.module('ToyotaTCheck.services.Firebase', [])
     this.setFirebaseUrl = function(url) {
       firebaseUrl = url;
     };
+
     this.$get = ['$firebase', function($firebase) {
       var root = new Firebase(firebaseUrl);
 
-      return {
-        root: root
-      };
+      return { root: root };
     }];
 
   });

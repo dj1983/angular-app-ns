@@ -25,6 +25,7 @@ angular.module('ToyotaTCheck.controllers.ItemController', [])
       Util.getYears().then(function(years) {
         $scope.years = years;
       });
+
       switch ($scope.item.fieldType) {
       case 'list':
         $scope.inputFieldTemplateUrl = tplBaseUrl + 'iList.html';
@@ -57,6 +58,5 @@ angular.module('ToyotaTCheck.controllers.ItemController', [])
             $scope.isSaveBtnDisabled = false;
           });
       };
-
     }
   ]);

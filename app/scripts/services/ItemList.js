@@ -30,4 +30,5 @@ angular.module('ToyotaTCheck.services.ItemList', [])
         }
       };
     }];
+
   });
