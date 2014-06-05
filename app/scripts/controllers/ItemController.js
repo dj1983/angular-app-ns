@@ -44,20 +44,17 @@ angular.module('ToyotaTCheck.controllers.ItemController', [])
 
       $scope.item = $firebase(FirebaseService.root.child('/items/' + $scope.item.id));
 
-      $scope.item.$on('child_changed', function(childSnapshot) {
-        Log.add({
-          id: $scope.item.id,
-          title: $scope.item.title,
-          key: childSnapshot.snapshot.name,
-          value: childSnapshot.snapshot.value
-        });
-      });
-
       $scope.saveItemValue = function() {
         $scope.isSaveBtnDisabled = true;
         $scope.loadingOverlay.isShow = true;
         $scope.item.$save()
           .then(function() {
+            Log.add({
+              id: $scope.item.id,
+              title: $scope.item.title,
+              key: 'value',
+              value: $scope.item.value
+            });
             $scope.isSaveBtnDisabled = false;
             $scope.loadingOverlay.isShow = false;
           });
