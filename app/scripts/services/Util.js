@@ -28,16 +28,6 @@ angular.module('ToyotaTCheck.services.Util', [])
           });
 
           return itemTree;
-        },
-        getYears: function() {
-          var deferred = $q.defer(),
-            years = $firebase(FirebaseService.root.child('data/years'));
-
-          years.$on('loaded', function(childSnapshot) {
-            deferred.resolve(childSnapshot);
-          });
-
-          return deferred.promise;
         }
       };
     }

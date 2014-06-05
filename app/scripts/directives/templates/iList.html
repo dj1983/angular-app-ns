@@ -1,1 +1,1 @@
-<select ng-model="item.value" ng-options="year as year for year in years" ng-disabled="isGuest"></select>
+<select ng-model="item.value" ng-options="year as year for year in years | orderByPriority" ng-disabled="isGuest"></select>

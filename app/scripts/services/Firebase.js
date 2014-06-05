@@ -13,7 +13,10 @@ angular.module('ToyotaTCheck.services.Firebase', [])
     this.$get = ['$firebase', function($firebase) {
       var root = new Firebase(firebaseUrl);
 
-      return { root: root };
+      return {
+        root: root,
+        years: $firebase(root.child('data/years'))
+      };
     }];
 
   });
