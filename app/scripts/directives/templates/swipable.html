@@ -3,7 +3,7 @@
   <span class="value">
     <span ng-include="inputFieldTemplateUrl"></span>
     <button ng-click="saveItemValue();" ng-disabled="isSaveBtnDisabled || isGuest">Save</button>
-    <!-- <button ng-disabled="isGuest" tcheck-flag>Flag</button> -->
+    <button ng-disabled="isGuest" ng-model='item.flagMsg' dialog>Flag</button>
   </span>
 </div>
 <ul class="subInfoGroup" ng-if="item.children.length > 0">
@@ -13,7 +13,7 @@
       <span class="value">
         <span ng-include="inputFieldTemplateUrl"></span>
         <button ng-click="saveItemValue();" ng-disabled="isSaveBtnDisabled || isGuest">Save</button>
-        <!-- <button ng-disabled="isGuest" tcheck-flag>Flag</button> -->
+        <button ng-disabled="isGuest" ng-model='item.flagMsg' dialog>Flag</button>
       </span>
     </div>
   </li>
