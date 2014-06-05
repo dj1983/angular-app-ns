@@ -44,15 +44,12 @@ angular.module('ToyotaTCheck.controllers.ItemController', [])
 
       $scope.item = $firebase(FirebaseService.root.child('/items/' + $scope.item.id));
 
-      // This event is triggered every time there is a remote change 
-      // in the data which was applied to the local object.
-      $scope.item.$on('change', function(key) {
-        $log.log('change :: ', key, ' :: changed to ', $scope.item[key]);
+      $scope.item.$on('child_changed', function(childSnapshot) {
         Log.add({
           id: $scope.item.id,
           title: $scope.item.title,
-          key: key,
-          value: $scope.item[key]
+          key: childSnapshot.snapshot.name,
+          value: childSnapshot.snapshot.value
         });
       });
 
@@ -65,5 +62,10 @@ angular.module('ToyotaTCheck.controllers.ItemController', [])
             $scope.loadingOverlay.isShow = false;
           });
       };
+
+      // Hack: Prevent binding event more than once
+      $scope.$on('$destroy', function() {
+        $scope.item.$off('child_changed');
+      });
     }
   ]);

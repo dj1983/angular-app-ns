@@ -4,10 +4,12 @@
 
 angular.module('ToyotaTCheck.services.Log', [])
   .factory('Log', [
+    '$firebase',
     '$log',
     '$q',
+    'FirebaseService',
     'User',
-    function($log, $q, User) {
+    function($firebase, $log, $q, FirebaseService, User) {
       var changeLog = [];
 
       return {
@@ -18,12 +20,18 @@ angular.module('ToyotaTCheck.services.Log', [])
         add: function(Log) {
           Log = Log || {};
           Log.user = User.getUserObjectData().email;
-          changeLog.push(Log);
+          FirebaseService.logs.$add({
+            id: Log.id,
+            user: Log.user,
+            changedValue: Log.value,
+            title: Log.title,
+            timestamp: Firebase.ServerValue.TIMESTAMP
+          });
 
           return Log;
         },
         get: function() {
-          return changeLog;
+          return $firebase(FirebaseService.root.child('logs'));
         }
       };
     }
