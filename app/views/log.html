@@ -4,7 +4,7 @@
   </p>
   <ul>
     <li ng-repeat="log in logs">
-      Item <em>{{log.id}}</em>#<em>{{log.title}}</em> changed to <em>{{log.changedValue}}</em> @ {{log.timestamp | date}} by {{log.user}}
+      Item <span class="log-title"><em>{{log.id}}</em>#<em>{{log.title}}</em></span> changed to <span class="log-value"><em>{{log.changedValue}}</em></span> @ {{log.timestamp | date}} by {{log.user}}
     </li>
   </ul>
 </div>

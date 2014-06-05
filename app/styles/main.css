@@ -126,3 +126,8 @@ input[type=checkbox],
 .log li {
   list-style: inherit;
 }
+.log-title, .log-value {
+  display: inline-block;
+  width: 200px;
+  text-align: center;
+}
