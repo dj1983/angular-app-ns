@@ -1,4 +1,4 @@
-<div ng-class="{ swipe: 1, 'subsub-category': item.children.length > 0 }">
+<div ng-class="{ swipe: 1, 'subsub-category': item.children.length > 0, 'item-change': isItemChanged }">
   <span class="title">{{item.title}}</span>
   <span class="value">
     <span ng-include="inputFieldTemplateUrl"></span>
@@ -8,7 +8,7 @@
 </div>
 <ul class="subInfoGroup" ng-if="item.children.length > 0">
   <li ng-repeat="item in childItems | itemFilter: itemStatus" ng-controller="ItemController">
-    <div class="swipe">
+    <div ng-class="{ swipe: 1, 'item-change': isItemChanged }">
       <span class="title">{{item.title}}</span>
       <span class="value">
         <span ng-include="inputFieldTemplateUrl"></span>

@@ -8,17 +8,19 @@ angular.module('ToyotaTCheck.controllers.ItemController', [])
     '$firebase',
     '$log',
     '$q',
+    '$timeout',
     '$window',
     'FirebaseService',
     'Item',
     'Log',
     'Util',
-    function($scope, $firebase, $log, $q, $window, FirebaseService, Item, Log, Util) {
+    function($scope, $firebase, $log, $q, $timeout, $window, FirebaseService, Item, Log, Util) {
 
       var tplBaseUrl = './scripts/directives/templates/';
 
       $scope.isSaveBtnDisabled = false;
       $scope.years = [];
+      $scope.isItemChanged = false;
 
       $scope.templateUrl = tplBaseUrl +
         ($scope.item.type === 'sub-category' ? 'unswipable.html' : 'swipable.html');
@@ -60,6 +62,12 @@ angular.module('ToyotaTCheck.controllers.ItemController', [])
           });
       };
 
+      $scope.item.$on('child_changed', function() {
+        $scope.isItemChanged = true;
+        $timeout(function() {
+          $scope.isItemChanged = false;
+        }, 1100);
+      });
       // Hack: Prevent binding event more than once
       $scope.$on('$destroy', function() {
         $scope.item.$off('child_changed');

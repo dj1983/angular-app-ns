@@ -131,3 +131,25 @@ input[type=checkbox],
   width: 200px;
   text-align: center;
 }
+/** Animation */
+/*.item-change, .swipe {
+  transition: 1s linear background-color;
+  -webkit-transition: 1s linear background-color;
+}*/
+.item-change {
+  background-color: #66CD00
+}
+.swipe.item-change-add,
+.swipe.item-change-remove {
+  transition: 1s linear all;
+  -webkit-transition: 1s linear all;
+}
+.swipe.item-change-add.item-change-add-active {
+  background-color: #66CD00;
+}
+.swipe.item-change-remove.item-change-remove-active {
+  background-color: #ffffff;
+}
+.swipe.subsub-category.item-change-remove.item-change-remove-active {
+  background-color: #ffffbe;
+}
