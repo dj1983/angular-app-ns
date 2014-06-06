@@ -20,6 +20,9 @@ angular.module('ToyotaTCheck.services.User', [])
         });
 
       function _callback(error, user) {
+        // Reset firebase connections, generate correct access
+        FirebaseService.reset();
+
         if (error) {
           // An error occurred while attempting login
           // Error code: <https://www.firebase.com/docs/security/simple-login-overview.html#Full Error Listing>

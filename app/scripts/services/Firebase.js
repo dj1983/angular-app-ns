@@ -16,7 +16,11 @@ angular.module('ToyotaTCheck.services.Firebase', [])
       return {
         root: root,
         years: $firebase(root.child('data/years')),
-        logs: $firebase(root.child('logs'))
+        logs: $firebase(root.child('logs')),
+        reset: function() {
+          this.years = $firebase(root.child('data/years'));
+          this.logs = $firebase(root.child('logs'));
+        }
       };
     }];
 
