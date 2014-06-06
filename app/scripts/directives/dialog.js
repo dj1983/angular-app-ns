@@ -9,25 +9,23 @@ angular.module('ToyotaTCheck.directives.dialog', [])
     return {
       restrict: 'A',
       require: '?ngModel',
-      scope: {},
       link: function(scope, element, attrs, ngModel) {
         if (!ngModel) return;
-        // $("#flagDialog").dialog({
-        //   buttons: [{
-        //     text: "OK",
-        //     click: function() {
-        //       $(this).dialog("close");
-        //     }
-        //   }]
-        // });
-        // $('#flagDialog').dialog("option", "buttons", [{
-        //   text: "save",
-        //   click: function() {
-        //     $(this).dialog("close");
-        //   }
-        // }]);
+        
         $(element).on('click', function() {
-          console.log(ngModel);
+          $('#flagMsg').val(scope.item.flagMsg);
+          $("#flagDialog").dialog({
+            buttons: [{
+              text: "Save",
+              click: function() {
+                scope.$apply(function() {
+                  ngModel.$setViewValue($('#flagMsg').val());
+                  scope.saveFlag();
+                });
+                $(this).dialog("close");
+              }
+            }]
+          });
         });
       }
     };

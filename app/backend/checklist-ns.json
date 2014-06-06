@@ -21,6 +21,7 @@
       "title": "Model year-1",
       "value": "2007",
       "status": "na",
+      "flagMsg": "",
       "fieldType": "list",
       "fieldValue": "years"
     },
@@ -30,6 +31,7 @@
       "title": "Version information-2",
       "value": "1.0.0",
       "status": "",
+      "flagMsg": "",
       "children": ["3"]
     },
     "3": {
@@ -39,6 +41,7 @@
       "title": "Release date-3",
       "value": "20/03/2014",
       "status": "flag",
+      "flagMsg": "Flag test",
       "fieldType": "date"
     },
     "4": {
@@ -47,6 +50,7 @@
       "title": "Exterior features-4",
       "type": "sub-category",
       "status": "",
+      "flagMsg": "",
       "children": ["5", "6", "7"]
     },
     "5": {
@@ -55,6 +59,7 @@
       "title": "See through roof-5",
       "value": "See through roof",
       "status": "",
+      "flagMsg": "",
       "parent": "4"
     },
     "6": {
@@ -63,6 +68,7 @@
       "title": "Solar powered roof panel-6",
       "value": "Solar powered roof panel",
       "status": "flag",
+      "flagMsg": "",
       "parent": "4"
     },
     "7": {
@@ -71,6 +77,7 @@
       "title": "Doors-7",
       "value": "Doors",
       "status": "",
+      "flagMsg": "",
       "children": ["8", "9", "10"]
     },
     "8": {
@@ -79,6 +86,7 @@
       "title": "door type-8",
       "value": "door type",
       "status": "na",
+      "flagMsg": "",
       "parent": "7"
     },
     "9": {
@@ -87,6 +95,7 @@
       "title": "door close system-9",
       "value": "door close system",
       "status": "flag",
+      "flagMsg": "",
       "parent": "7"
     },
     "10": {
@@ -95,6 +104,7 @@
       "title": "electric doors-10",
       "value": "electric doors",
       "status": "",
+      "flagMsg": "",
       "parent": "7"
     }
   },
