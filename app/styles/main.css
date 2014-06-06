@@ -28,7 +28,7 @@ li {
   font-size: 16px;
   line-height: 40px;
   padding-top: 10px;
-  margin-left: 15px;
+  /*margin-left: 15px;*/
 }
 .tt-category {
   background-color: #2D363F;
@@ -46,7 +46,7 @@ li {
   background-color: #3076b7;
   color: #fff;
   font-size: 1.5em;
-  padding: 10px 0px 10px 20px;
+  padding: 10px 0px 10px 40px;
 }
 .value, .edit {
   float: right;
@@ -54,6 +54,7 @@ li {
 .swipe {
   font-size: 1.5em;
   padding: 5px;
+  padding-left: 45px;
 }
 .subGroup .title,
 .subInfoGroup .title{
@@ -130,4 +131,34 @@ input[type=checkbox],
   display: inline-block;
   width: 200px;
   text-align: center;
+}
+/** Animation */
+.item-change {
+  background-color: #66CD00
+}
+.swipe.item-change-add,
+.swipe.item-change-remove {
+  transition: 1s linear background-color;
+  -webkit-transition: 1s linear background-color;
+}
+.swipe.item-change-add.item-change-add-active {
+  background-color: #66CD00;
+}
+.swipe.item-change-remove.item-change-remove-active {
+  background-color: #ffffff;
+}
+.swipe.subsub-category.item-change-remove.item-change-remove-active {
+  background-color: #ffffbe;
+}
+/** Dialog */
+#flagMsg {
+  width: 98%;
+}
+.flag {
+  background-image: url('./images/flag.png');
+  background-repeat: no-repeat;
+  background-position: 5px;
+}
+.tcheck-access {
+  display: none;
 }

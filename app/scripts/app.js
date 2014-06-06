@@ -3,6 +3,7 @@
 // Declare app level module which depends on filters, and services
 angular.module('ToyotaTCheck', [
     'ngRoute',
+    'ngAnimate',
     'firebase',
     /** Services */
     'ToyotaTCheck.services.ItemList',
@@ -16,6 +17,7 @@ angular.module('ToyotaTCheck', [
     /** Directives */
     'ToyotaTCheck.directives.loadingIndicator',
     'ToyotaTCheck.directives.datepicker',
+    'ToyotaTCheck.directives.dialog',
     /** Controllers */
     'ToyotaTCheck.controllers.ItemListController',
     'ToyotaTCheck.controllers.ItemController',
