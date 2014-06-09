@@ -92,6 +92,7 @@ Angular filters:
 **We must ensure that the form has a `name` attribute associated with it.** Like `myForm` in above example.
 
 List of all the validation options we have that we can place on an input field:
+
 | Options      | Example                                   |
 | :----------: | ----------------------------------------- |
 | required     | `<input type="text" required>`            |
@@ -106,6 +107,7 @@ List of all the validation options we have that we can place on an input field:
 
 We could control the form status in real-time by the following variables:
 ( Common format: formName.inputFieldName.property )
+
 | Form Status      | Angular Syntax                      | Returns                                                           |
 | ---------------- | ------------------------------------|------------------------------------------------------------------ |
 | Unmodified form? | `formName.inputFieldName.$pristine` | `true`: if user hasn't touched the form  `false`: if they have    |
