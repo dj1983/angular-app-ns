@@ -1,5 +1,12 @@
 # Form Validation
 
+* [Validation options](#validation-options)
+* [Control Variables in Forms](#control-variables-in-forms)
+* [Custom validation](#custom-validation)
+
+## Validation options
+
+Example HTML code:
 ```html
 <form name="myForm" novalidate>
   <label name="email">Your email</label>
@@ -36,7 +43,7 @@ We could control the form status in real-time by the following variables:
 
 ### One more word on `formName.inputFieldName.$error`
 
-For example, we have the html code like this:
+For example, we have the HTML code like this:
 ```html
 <form action="" class="login-form" name="loginForm">
   <input autofocus="autofocus" type="email" name="email" id="email" ng-model="email" required>
