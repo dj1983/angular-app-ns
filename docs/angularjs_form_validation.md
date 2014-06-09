@@ -2,6 +2,7 @@
 
 * [Validation options](#validation-options)
 * [Control Variables in Forms](#control-variables-in-forms)
+* [CSS classes applied on form fields by Angular](#css-classes-applied-on-form-fields-by-angular)
 * [Custom validation](#custom-validation)
 
 ## Validation options
@@ -64,7 +65,10 @@ loginForm.$error = {
     "$name": "password",
     "$error": {
       "required": true
-    }
+    },
+    "$parsers": [],
+    "$formatters": [],
+    "$viewChangeListeners": [],
   }, {
     "$viewValue": "",
     "$pristine": false,
@@ -75,7 +79,10 @@ loginForm.$error = {
     "$error": {
       "required": true,
       "email": false
-    }
+    },
+    "$parsers": [],
+    "$formatters": [],
+    "$viewChangeListeners": [],
   }],
   "email": false
 }
@@ -90,7 +97,10 @@ loginForm.$error = {
     "$name": "password",
     "$error": {
       "required": true
-    }
+    },
+    "$parsers": [],
+    "$formatters": [],
+    "$viewChangeListeners": [],
   }],
   "email": [{
     "$viewValue": "invalid email",
@@ -102,7 +112,10 @@ loginForm.$error = {
     "$error": {
       "required": false,
       "email": true
-    }
+    },
+    "$parsers": [],
+    "$formatters": [],
+    "$viewChangeListeners": [],
   }]
 }
 
@@ -123,3 +136,58 @@ As you read the last section: `Control Variables in Forms`, it's easy to underst
 .ng-invalid {}
 ```
 Depend on status of input field, these classes will be applied to the field in real-time.
+
+## Custom validation
+
+> When we user interacts with the controller from the page, for instance we input username and password, `$setViewValue()` method has been called on the `ngModelController`. It will update the `$viewValue`, then pass this value through each of the functions in `$parsers`, which includes any validators. The value that comes out of this `$parsers` pipeline, be applied to `$modelValue` and the expression specified in the ng-model attribute.
+
+The functions in `$parsers` have the opportunity to convert the value and change the validity state of the control by using the `$setValidity()` functions.  
+So, using the `$parsers` array is one way we can create a custom validation.
+
+Now, suppose that we have a user registry form, we want to check if the username is available (the input username isn't registered).
+
+`patrick` is an invalid username. If we input it, username field will be invalid, so marked with red background color.
+
+[Live demo here](./examples/form_validation_parsers.html)
+```html
+<form name="registryForm" novalidate>
+  <label name="username">Your username</label>
+  <input type="text" name="username" ng-model="username" placeholder="Your username" available-username/>
+</form>
+```
+
+```css
+input.ng-invalid {
+  background-color: red;
+}
+```
+
+```javascript
+'use strict';
+angular.module('demoApp', [])
+  .value('username', {
+    'patrick': {
+      'gender': 'M',
+      'avatar': 'idenicon.png'
+    }
+  })
+  .directive('availableUsername', ['username', function(username) {
+    return {
+      require: '?ngModel',
+      link: function(scope, iElement, iAttrs, ngModel) {
+        if (!ngModel) { return; }
+        ngModel.$parsers.unshift(function(viewValue) {
+          if (username[viewValue]) {
+            // Invalid
+            ngModel.$setValidity('availableUsername', false);
+            return undefined;
+
+          } else {
+            ngModel.$setValidity('availableUsername', true);
+            return viewValue;
+          }
+        });
+      }
+    }
+  }]);
+```
