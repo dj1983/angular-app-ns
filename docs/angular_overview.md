@@ -115,6 +115,87 @@ We could control the form status in real-time by the following variables:
 | Valid form?      | `formName.inputFieldName.$valid`    | `true`: for valid  `false`: for invalid                           |
 | Invalid form?    | `formName.inputFieldName.$invalid`  | `true`: for invalid  `false`: for valid                           |
 | Errors           | `formName.inputFieldName.$error`    | This object contains all of the validations on a particular form. |
-:warning: Will test why need $pristine and $dirty.
 
-One more word on `formName.inputFieldName.$error`
+#### One more word on `formName.inputFieldName.$error`
+
+For example, we have the html code like this:
+```html
+<form action="" class="login-form" name="loginForm">
+  <input autofocus="autofocus" type="email" name="email" id="email" ng-model="email" required>
+  <input type="password" name="password" id="password" ng-model="password" required>
+</form>
+```
+Let's look at the `loginForm.$error` object:
+```javascript
+// Note that, I ignored some values in the following objects
+
+// If we input nothing for both fields
+loginForm.$error = {
+  "required": [{
+    "$pristine": true,
+    "$dirty": false,
+    "$valid": false,
+    "$invalid": true,
+    "$name": "password",
+    "$error": {
+      "required": true
+    }
+  }, {
+    "$viewValue": "",
+    "$pristine": false,
+    "$dirty": true,
+    "$valid": false,
+    "$invalid": true,
+    "$name": "email",
+    "$error": {
+      "required": true,
+      "email": false
+    }
+  }],
+  "email": false
+}
+
+// If we input something but not a valid email in the email field
+loginForm.$error = {
+  "required": [{
+    "$pristine": true,
+    "$dirty": false,
+    "$valid": false,
+    "$invalid": true,
+    "$name": "password",
+    "$error": {
+      "required": true
+    }
+  }],
+  "email": [{
+    "$viewValue": "invalid email",
+    "$pristine": false,
+    "$dirty": true,
+    "$valid": false,
+    "$invalid": true,
+    "$name": "email",
+    "$error": {
+      "required": false,
+      "email": true
+    }
+  }]
+}
+
+// If we input valid values for both
+loginForm.$error = {
+  "required": false,
+  "email": false
+}
+```
+
+### CSS classes applied on form fields by Angular
+
+As you read the last section: `Control Variables in Forms`, it's easy to understand the classes:
+```css
+.ng-pristine {}
+.ng-dirty {}
+.ng-valid {}
+.ng-invalid {}
+```
+Depend on status of input field, these classes will be applied to the field in real-time.
+
