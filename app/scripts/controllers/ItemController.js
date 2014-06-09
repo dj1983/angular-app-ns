@@ -112,6 +112,18 @@ angular.module('ToyotaTCheck.controllers.ItemController', [])
           $scope.isFlag = 1;
           $scope.statusIconPath = iconBaseUrl + 'flag.png';
         }
+        Log.add({
+          id: $scope.item.id,
+          title: $scope.item.title,
+          key: 'status',
+          value: $scope.item.status
+        });
+        Log.add({
+          id: $scope.item.id,
+          title: $scope.item.title,
+          key: 'flagMsg',
+          value: $scope.item.flagMsg
+        });
       };
     }
   ]);
