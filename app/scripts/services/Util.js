@@ -4,11 +4,8 @@
 
 angular.module('ToyotaTCheck.services.Util', [])
   .factory('Util', [
-    'FirebaseService',
-    '$firebase',
-    '$q',
     '$log',
-    function(FirebaseService, $firebase, $q, $log) {
+    function($log) {
 
       return {
         /**
