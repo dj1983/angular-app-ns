@@ -1,4 +1,4 @@
-# Excellent features of AngularJS
+# AngularJS Overview
 
 As you know, [Angularjs](https://angularjs.org/) is first written by **Google** under [MIT license](http://en.wikipedia.org/wiki/MIT_License). From then on, hundreds of developers(about 900 till now) contributed to this project. Angularjs is supported by Google organization, so you don't be afraid that it will be abandoned tomorrow.
 

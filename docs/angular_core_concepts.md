@@ -1,4 +1,4 @@
-# AngularJS basic concepts
+# AngularJS Core Concepts
 
 ## Modules
 
