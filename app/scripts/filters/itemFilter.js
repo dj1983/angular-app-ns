@@ -5,10 +5,8 @@
 angular.module('ToyotaTCheck.filters.itemFilter', [])
   .filter('itemFilter', [
     '$filter',
-    'FirebaseService',
-    '$firebase',
     '$log',
-    function($filter, FirebaseService, $firebase, $log) {
+    function($filter, $log) {
 
       return function(items, itemStatus) {
         var exprFn = function(item) {
