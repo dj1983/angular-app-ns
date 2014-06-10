@@ -9,6 +9,8 @@
 * [Directives](#directives)
 * [Filters](#filters)
 * [Services](#services)
+* [Libraries](#libraries)
+* [Style](#style)
 
 User should login to this app first. User could be an admin or a guest. Admins can edit the items and guests not. They both could see the logs. Item modified by one user will reflect to other users in realtime. Logs are updated in realtime, too. At last, user can logout this application.
 
@@ -341,3 +343,57 @@ Angular services are:
 
 > Note: Like other core Angular identifiers built-in services always start with $ (e.g. $http).
 
+[Link to Services](../app/scripts/services)
+
+| Services | Details                                 |
+| -------- | --------------------------------------- |
+| Firebase | Keey firebase references                |
+| User     | User authority                          |
+| Log      | getter and setter of Log                |
+| Util     | Helper function help generate item tree |
+
+Example code:
+
+```javascript
+'use strict';
+
+/* Service */
+
+angular.module('ToyotaTCheck.services.Util', [])
+  .factory('Util', [
+    '$log',
+    function($log) {
+
+      return {
+        /**
+         * @param ids {Array}  Example: ["1", "2", "3"]
+         * @param dictionary {Object}  Example: {"1": { "id": "1", "title": "lorem", "children": ["5", "6", "7"] }}
+         * @returns {Array}  
+         */
+        getItemTree: function getItemTree(ids, dictionary) {
+          var itemTree = [], item;
+
+          angular.forEach(ids, function(id) {
+            item = dictionary[id];
+            if (item.children && item.children.length > 0) {
+              item.children = getItemTree(item.children, dictionary);
+            }
+            itemTree.push(item);
+          });
+
+          return itemTree;
+        }
+      };
+    }
+  ]);
+```
+
+## Libraries
+
+[Link to Libraries](../app/scripts/vendor)
+
+All the 3rd party libraries put in the `vendor` directory.
+
+## Style
+
+All the style sheets and images are put in [styles folder](../app/styles).
