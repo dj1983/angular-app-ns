@@ -139,7 +139,9 @@ Depend on status of input field, these classes will be applied to the field in r
 
 ## Custom validation
 
-> When we user interacts with the controller from the page, for instance we input username and password, `$setViewValue()` method has been called on the `ngModelController`. It will update the `$viewValue`, then pass this value through each of the functions in `$parsers`, which includes any validators. The value that comes out of this `$parsers` pipeline, be applied to `$modelValue` and the expression specified in the ng-model attribute.
+> When we user interacts with the controller from the page, for instance we input username and password, `$setViewValue()` method has been called on the `ngModelController`. It will update the `$viewValue`, then pass this value through each of the functions in `$parsers`, which includes any validators. The value that comes out of this `$parsers` pipeline be applied to `$modelValue` and the expression specified in the ng-model attribute.
+
+### $parsers
 
 The functions in `$parsers` have the opportunity to convert the value and change the validity state of the control by using the `$setValidity()` functions.  
 So, using the `$parsers` array is one way we can create a custom validation.
@@ -188,6 +190,30 @@ angular.module('demoApp', [])
           }
         });
       }
-    }
+    };
   }]);
 ```
+
+### $formatters
+
+Whenever the model value changes, the value will be passed to `$formatters` functions one by one. Then display on the page.
+For the demo above, we want to format the input username to lowercase. So we can do this way:
+
+[Live demo here](./examples/form_validation_formatters.html)
+```javascript
+'use strict';
+angular.module('demoApp', [])
+  .directive('lowercase', ['$filter', function($filter) {
+    return {
+      require: '?ngModel',
+      link: function(scope, iElement, iAttrs, ngModel) {
+        if (!ngModel) { return; }
+        ngModel.$formatters.unshift(function(viewValue) {
+          return $filter('lowercase')(viewValue);
+        });
+      }
+    };
+  }]);
+```
+
+(END)
