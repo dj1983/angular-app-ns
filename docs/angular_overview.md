@@ -1,81 +1,132 @@
-# AngularJS basic concepts
+# Excellent features of AngularJS
 
-## Modules
+As you know, [Angularjs](https://angularjs.org/) is first written by **Google** under [MIT license](http://en.wikipedia.org/wiki/MIT_License). From then on, hundreds of developers(about 900 till now) contributed to this project. Angularjs is supported by Google organization, so you don't be afraid that it will be abandoned tomorrow.
 
-Use modules to encapsulate code so that keep away from global namespace. It's easy for testing and ready for reuse.
+## Two-way data binding
+
+This is the coolest feature. We may write less and do more. So we can save much time.  
+By the statistics, **80%** code of a web application are  DOM manipulation and event listenters.  
+For example:
 ```javascript
-angular.module('myApp', [/*?injectables*/]); // Define a module
-// injectables will be loaded before this module loads
+function filter(event) {
+  var $body = $("body"),
+    classNames = event.data, // Array
+    isIncompleted = (classNames[0] === "NEW"),
+    selector = classNames.length === 1 ? "." + classNames[0] : "." + classNames.join(",.");
 
-angular.module('myApp');     // Get 'myAp' module reference
+  $body.addClass("ui-disabled");
+  $.mobile.loading("show");
+
+  if (!$(selector).length) {
+    switch (classNames[0]) {
+    case "FLAGGED":
+      popupErrorMessage("No FLAGGED ITEMS!");
+      break;
+    case "ESCALATED":
+      popupErrorMessage("No ESCALATED ITEMS!");
+      break;
+    case "NEW":
+      popupErrorMessage("NO INCOMPLETED ITEMS!");
+      break;
+    default:
+      popupErrorMessage("NO ITEMS!");
+    }
+
+    $body.removeClass('ui-disabled');
+    $.mobile.loading('hide');
+
+  } else {
+    $list
+      .detach()
+      .find(".subBar")
+        .each(function() {
+          var $this = $(this);
+
+          if ($this
+              .next(".content")
+                .find("li")
+                  .show()
+                  .not(selector)
+                    .hide()
+                    .end()
+                  .filter(selector)
+                    .length) {
+
+            if (isIncompleted) {
+              collapseSection($this);
+
+            } else {
+              expandSection($this);
+            }
+
+          } else {
+            collapseSection($this);
+            $this.hide();
+          }
+        })
+      .end()
+    .insertBefore($executionPanel);
+
+    initPopup();
+    $body.removeClass("ui-disabled");
+    $.mobile.loading("hide");
+  }
+}
+```
+Most code of this function are DOM manipulations. Angularjs offer us a way to sync between view and model, we don't need to pay much attention on these manipulations. We can focus on our applications.  
+
+If we use Angularjs to implement this function, the code may look like:  
+```html
+<ul>
+  <li ng-repeat="item in items | filter: className">
+    {{item.title}}
+  </li>
+</ul>
+```
+When we change the `className` on `$scope` in controller, Angularjs take responsibility for update the DOM.
+
+So what's the differences here?  
+Before, when model change, we have to update DOM manually.  
+Now, we update the model, and Angular update the DOM for us.
+
+On the other hand, when DOM changes, it also reflect in model.
+
+## Template
+
+Template in Angular is just an HTML file. The HTML has been extended, contains mapping between model and view.  
+:warning: Angular treat template as DOM not a string.  
+```html
+<ol>
+  <li ng-repeat="log in logs">
+    {{log.title}} changed to {{log.changedValue} @ {{log.timestamp | date}} by {{log.user}}
+  </li>
+</ol>
 ```
 
-## Scopes
+## MVC
 
-The scopes of the application refer to the application *model*.  
-Scopes are the execution context for expressions.
+Angular follow basic [MVC](http://en.wikipedia.org/wiki/Model-view-controller) principles. But it's more like [MVVM](http://en.wikipedia.org/wiki/MVVM).
 
-**Scopes are the source of truth** for the application state.
+`Model` is data of application.  
+`ViewModel` in Angular is `$scope` object. It's bound to view for maintaining it.  
+`Controller` is to init `$scope`.  
+`View` is rendered HTML.
 
-### $scope
+## Dependency Injection (DI)
 
-* The `$scope` is like a bridge between view(DOM) and controller.  
-* The `$scope` object is where we define the business functinality of the application, the methods in our controllers, and properties in the views.  
-* `$scope`s have a hierarchical structure. That's to say we can reference properties on parent `$scope`s from a child `$scope`. It's just like create a nested context in JavaScript.  
-* `$scope` is just a plain old JavaScript object.  
-* **All properties found on the $scope object are automatically accessible to the view.**
+[Dependency Injection (DI)](http://en.wikipedia.org/wiki/Dependency_injection) is a software design pattern that deals with how components get hold of their dependencies.
 
+## Directives
 
-#### $rootScope
+Angular uses directives to extend the ability of HTML. For example:  
+```html
+<form name="registryForm" novalidate ng-app="demoApp">
+  <input type="text" name="username" ng-model="username" placeholder="Your username" lowercase/>
+</form>
+<dialog>Hello world!</dialog>
+```
+`ng-app` , `ng-model` , `lowercase` , `dialog` are all directives.
 
-When our Angular application starts, it will bind the `ng-app` element to the `$rootScope`.  
-`$rootScope` is the outer-most scope, it's the eventual parent of all `$scope` objects in your application.  
-- [ ] Global context
-  - [ ] $rootScope
-    - [ ] $scopes
+## Unit testing
 
-### $scope Lifecycle
-
-1. Creation  
-When we create a controller or directive, Angular creates a new scope and passes it to the controller or directive.
-2. Linking  
-`$scope` is linked to the view and directives register watches.
-3. Updating  
-During the `$digest` cycle, which executes on the `$rootScope`, all of the children scopes will perform dirty digest checking.
-4. Destruction  
-When `$scope` is no longer needed, the child scope creator will need to call `scope.$destroy()` to clean up the child scope.
-
-### Directives and Scopes
-
-Directives generally don't create their own `$scope`s, but there're cases when they do. For example, `ng-controller` and `ng-repeat` directives create their own child scopes and attach them to the DOM element.
-
-## Controllers
-
-The controller function takes one parameter, the `$scope` of the DOM element. This `$scope` object is available on the element and the controller, and it will be the bridge by which we'll communicate from the controller to the view.
-
-## Expressions
-
-Notation: {{expression}}
-
-* All expressions are executed in the context of the scope and have access to local `$scope` variables.
-* An expression doesn't throw errors if it results in a *TypeError* or a *ReferenceError*.
-* They do not allow for any control flow functions (if / else)
-* They can accept a filter and/or filter chains.
-
-Angular evaluates expressions by an internal service `$parse`.
-
-## Filters
-
-A filter provides a way to format the data we display to the user.  
-If we apply a filter on an array, it will return a new filtered array.
-
-Angular filters:
-* currency
-* date
-* filter
-* json (Format json object to a string)
-* limitTo (Get the given number of items)
-* lowercase
-* number
-* orderBy
-* uppercase
+Because we put modules together by **Dependency Injection**, so it's easy for writing unit tests.
