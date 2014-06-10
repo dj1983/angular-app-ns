@@ -5,18 +5,14 @@
 angular.module('ToyotaTCheck.controllers.LoginController', [])
   .controller('LoginController', [
     '$scope',
-    'User',
     '$location',
-    '$log',
-    function($scope, User, $location, $log) {
+    'User',
+    function($scope, $location, User) {
       $scope.errorMsg = '';
       $scope.loginDisabled = false;
       $scope.isRememberMe = true;
-
-      // Test use begin
-      $scope.email = 'user@fabricgroup.com.au';
-      $scope.password = 'user';
-      // Test use end
+      $scope.email = '';
+      $scope.password = '';
 
       $scope.authorize = function() {
         User.authorize().then(function(status) {
