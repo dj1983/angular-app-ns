@@ -12,9 +12,7 @@ function filter(event) {
   var $body = $("body"),
     classNames = event.data, // Array
     isIncompleted = (classNames[0] === "NEW"),
-    selector = classNames.length === 1 ?
-      "." + classNames[0] :
-      "." + classNames.join(",.");
+    selector = classNames.length === 1 ? "." + classNames[0] : "." + classNames.join(",.");
 
   $body.addClass("ui-disabled");
   $.mobile.loading("show");
@@ -88,5 +86,47 @@ If we use Angularjs to implement this function, the code may look like:
 When we change the `className` on `$scope` in controller, Angularjs take responsibility for update the DOM.
 
 So what's the differences here?  
-Before, when model change, we have to update DOM manually.
+Before, when model change, we have to update DOM manually.  
 Now, we update the model, and Angular update the DOM for us.
+
+On the other hand, when DOM changes, it also reflect in model.
+
+## Template
+
+Template in Angular is just an HTML file. The HTML has been extended, contains mapping between model and view.  
+:warning: Angular treat template as DOM not a string.  
+```html
+<ol>
+  <li ng-repeat="log in logs">
+    {{log.title}} changed to {{log.changedValue} @ {{log.timestamp | date}} by {{log.user}}
+  </li>
+</ol>
+```
+
+## MVC
+
+Angular follow basic [MVC](http://en.wikipedia.org/wiki/Model-view-controller) principles. But it's more like [MVVM](http://en.wikipedia.org/wiki/MVVM).
+
+`Model` is data of application.  
+`ViewModel` in Angular is `$scope` object. It's bound to view for maintaining it.  
+`Controller` is to init `$scope`.  
+`View` is rendered HTML.
+
+## Dependency Injection (DI)
+
+[Dependency Injection (DI)](http://en.wikipedia.org/wiki/Dependency_injection) is a software design pattern that deals with how components get hold of their dependencies.
+
+## Directives
+
+Angular uses directives to extend the ability of HTML. For example:  
+```html
+<form name="registryForm" novalidate ng-app="demoApp">
+  <input type="text" name="username" ng-model="username" placeholder="Your username" lowercase/>
+</form>
+<dialog>Hello world!</dialog>
+```
+`ng-app` , `ng-model` , `lowercase` , `dialog` are all directives.
+
+## Unit testing
+
+Because we put modules together by **Dependency Injection**, so it's easy for writing unit tests.
