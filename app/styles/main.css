@@ -53,7 +53,6 @@ li {
 }
 .swipe {
   font-size: 1.5em;
-  padding: 5px;
   padding-left: 45px;
 }
 .subGroup .title,
@@ -158,3 +157,11 @@ input[type=checkbox],
 .tcheck-access {
   display: none;
 }
+
+/*new*/
+
+.subBar button{ margin-right: 5px; margin-top: 10px;}
+.filterField{ margin-top: 10px; margin-left: 5px;}
+.filterField span, .filterField label{ color: #fff; font-weight: bold;}
+.value button{ background: #2f7bbd; border-radius: 3px; box-shadow: 2px 2px 5px #ccc;}
+.value button.ng-pristine{ background:#52b266;border-radius: 3px; box-shadow: 2px 2px 5px #ccc;}
