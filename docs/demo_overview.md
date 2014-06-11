@@ -10,7 +10,7 @@
 * [Filters](#filters)
 * [Services](#services)
 * [Libraries](#libraries)
-* [Style](#style)
+* [Styles](#styles)
 
 User should login to this app first. User could be an admin or a guest. Admins can edit the items and guests not. They both could see the logs. Item modified by one user will reflect to other users in realtime. Logs are updated in realtime, too. At last, user can logout this application.
 
@@ -51,7 +51,7 @@ app
 
 [data.json](../app/backend/checklist-ns.json)
 
-Or you could get the data from firebase in realtime through <https://tcheck.firebaseio.com/.json> by HTTP GET request.
+Or you could get the data from firebase in realtime through <https://66.firebaseio.com/.json> by HTTP GET request (or just visit in browsers).
 
 ## Index page
 
@@ -390,10 +390,8 @@ angular.module('ToyotaTCheck.services.Util', [])
 
 ## Libraries
 
-[Link to Libraries](../app/scripts/vendor)
+All the 3rd party libraries put in the [vendor directory](../app/scripts/vendor).
 
-All the 3rd party libraries put in the `vendor` directory.
+## Styles
 
-## Style
-
-All the style sheets and images are put in [styles folder](../app/styles).
+All the style sheets and images are put in [styles directory](../app/styles).
