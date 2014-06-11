@@ -5,14 +5,13 @@
 angular.module('ToyotaTCheck.controllers.ItemListController', [])
   .controller('ItemListController', [
     '$scope',
-    'FirebaseService',
-    '$firebase',
-    'User',
     '$location',
-    '$log',
-    function($scope, FirebaseService, $firebase, User, $location, $log) {
-      $scope.categories = $firebase(FirebaseService.root.child('categories'));
+    'FirebaseService',
+    'User',
+    function($scope, $location, FirebaseService, User) {
+      $scope.categories = FirebaseService.categories;
       $scope.itemStatus = 'all';
+      $scope.isGuest = true;
       $scope.loadingOverlay = {
         isShow: 0
       };
@@ -27,20 +26,6 @@ angular.module('ToyotaTCheck.controllers.ItemListController', [])
         value: 'na'
       }];
 
-      $scope.filterAll = function() {
-        $scope.itemStatus = 'all';
-      };
-
-      $scope.filterFlag = function() {
-        $scope.itemStatus = 'flag';
-      };
-
-      $scope.filterNA = function() {
-        $scope.itemStatus = 'na';
-      };
-
-      $scope.isGuest = true;
-
       $scope.authorize = function() {
         if (User.isLogin()) {
           $scope.email = User.getUserObjectData().email;
@@ -54,6 +39,10 @@ angular.module('ToyotaTCheck.controllers.ItemListController', [])
         User.logout();
       };
 
+      $scope.viewLog = function() {
+        $location.path('/log');
+      };
+
       $scope.$watch(function() {
         return User.isLogin();
       }, function(newValue, oldValue) {
@@ -61,9 +50,5 @@ angular.module('ToyotaTCheck.controllers.ItemListController', [])
           $location.path('/login');
         }
       });
-
-      $scope.viewLog = function() {
-        $location.path('/log');
-      };
     }
   ]);
